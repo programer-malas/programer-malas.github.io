@@ -1,49 +1,261 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <div class="comic-grid">
+                <div class="panel hero-panel">
+                    <h1>FULLSTACK<br />DEVELOPER</h1>
+                    <div class="action-lines"></div>
+                </div>
+
+                <div class="panel profile-panel">
+                    <img
+                        src="/avatar/programerMalas.webp"
+                        alt="Profile Picture"
+                    />
+                    <div class="caption-box">Programer Malas</div>
+                </div>
+
+                <div class="panel intro-panel">
+                    <div class="speech-bubble">
+                        <p>
+                            <strong>Yo!</strong> I'm the developer you're looking
+                            for.
+                        </p>
+                        <p>
+                            I build <em>blazing fast</em> websites and robust applications.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="panel content-panel">
+                    <h2>Latest Transmission</h2>
+                    <p>
+                        Welcome to my digital HQ. This site is built with
+                        <a href="https://astro.build/">Astro</a>. It's
+                        lightweight, fast, and now...
+                    </p>
+                    <div class="cta-container">
+                        <a href="/blog" class="btn">Read Blog</a>
+                        <a href="/about" class="btn secondary">Who am I?</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <Footer />
+    </body>
 </html>
+
+<style>
+    .comic-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 1.5rem;
+    }
+
+    .panel {
+        border: 3px solid var(--black);
+        padding: 1.5rem;
+        background: var(--white);
+        box-shadow: 5px 5px 0 var(--black);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.2s;
+    }
+
+    .panel:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 7px 7px 0 var(--black);
+    }
+
+    .hero-panel {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        background-color: var(--accent);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 300px;
+        transform: rotate(-1deg);
+        z-index: 2;
+    }
+
+    .profile-panel {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profile-panel img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border: none;
+        box-shadow: none;
+    }
+
+    .caption-box {
+        background: var(--black);
+        color: var(--white);
+        font-family: "Bangers", cursive;
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-panel h1 {
+        color: var(--white);
+        text-shadow: 4px 4px 0 var(--black);
+        font-size: 3.5rem;
+        text-align: center;
+        line-height: 0.9;
+        z-index: 2;
+        -webkit-text-stroke: 2px var(--black);
+    }
+
+    .action-lines {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 0, 0, 0.1) 10px,
+            rgba(0, 0, 0, 0.1) 20px
+        );
+        z-index: 1;
+    }
+
+    .intro-panel {
+        grid-column: 1 / -1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--gray-light);
+        min-height: 150px;
+    }
+
+    .speech-bubble {
+        background: var(--white);
+        border: 3px solid var(--black);
+        padding: 1.5rem;
+        border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+        position: relative;
+        max-width: 400px;
+        text-align: center;
+        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .speech-bubble::after {
+        content: "";
+        position: absolute;
+        top: -20px;
+        right: 20%;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 0px solid transparent;
+        border-bottom: 20px solid var(--black);
+    }
+    .speech-bubble::before {
+        content: "";
+        position: absolute;
+        top: -13px;
+        right: 21%;
+        width: 0;
+        height: 0;
+        border-left: 16px solid transparent;
+        border-right: 0px solid transparent;
+        border-bottom: 16px solid var(--white);
+        z-index: 1;
+    }
+
+    .content-panel {
+        grid-column: 1 / -1;
+    }
+
+    .highlight {
+        background: linear-gradient(
+            120deg,
+            var(--accent) 0%,
+            var(--accent) 100%
+        );
+        background-repeat: no-repeat;
+        background-size: 100% 0.3em;
+        background-position: 0 88%;
+        font-weight: bold;
+    }
+
+    .cta-container {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn.secondary {
+        background: var(--black);
+        color: var(--white);
+    }
+
+    .graphics-panel {
+        background: var(--black);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .graphics-panel h3 {
+        color: var(--white);
+        border: 2px solid var(--white);
+        padding: 0.5rem;
+        transform: rotate(3deg);
+    }
+
+    @media (max-width: 768px) {
+        .comic-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+        .hero-panel,
+        .profile-panel,
+        .intro-panel {
+            grid-column: auto;
+            grid-row: auto;
+        }
+
+        .hero-panel {
+            transform: rotate(0deg);
+        }
+
+        .speech-bubble {
+            max-width: 100%;
+            border-radius: 12px;
+        }
+        .speech-bubble::after,
+        .speech-bubble::before {
+            display: none;
+        }
+    }
+</style>
