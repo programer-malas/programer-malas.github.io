@@ -1,0 +1,329 @@
+---
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+
+export async function getStaticPaths() {
+    const works = await getCollection('works');
+    return works.map((work) => ({
+        params: { id: work.id },
+        props: { work },
+    }));
+}
+
+const { work } = Astro.props;
+const { Content } = await render(work);
+
+const tagColors: Record<string, string> = {
+    'Astro':      '#ff3e00',
+    'Laravel':    '#ff2d20',
+    'Vue.js':     '#42b883',
+    'TypeScript': '#3178c6',
+    'PHP':        '#777bb4',
+    'MySQL':      '#4479a1',
+    'Redis':      '#dc382d',
+    'Flutter':    '#02569b',
+    'Dart':       '#0175c2',
+    'Firebase':   '#ffca28',
+    'CSS':        '#264de4',
+    'JAMstack':   '#f0047f',
+    'REST API':   '#6c757d',
+    'SEO':        '#34a853',
+    'Tailwind CSS': '#38bdf8',
+    'Anime.js':   '#e91e63',
+};
+
+function tagColor(tag: string): string {
+    return tagColors[tag] ?? '#555';
+}
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title={`${work.data.title} | ${SITE_TITLE}`}
+            description={work.data.description}
+        />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <!-- Back link -->
+            <div class="back-link-row">
+                <a href="/works" class="back-link">← Back to Works</a>
+            </div>
+
+            <!-- Hero panel -->
+            <div class="hero-panel">
+                <div class="action-lines"></div>
+                <div class="hero-content">
+                    {work.data.featured && <span class="featured-badge">⭐ FEATURED</span>}
+                    <h1>{work.data.title}</h1>
+                    <p class="hero-desc">{work.data.description}</p>
+                    <div class="tags">
+                        {work.data.tags.map((tag) => (
+                            <span class="tag" style={`background:${tagColor(tag)}`}>{tag}</span>
+                        ))}
+                    </div>
+                    <div class="hero-actions">
+                        {work.data.link && (
+                            <a href={work.data.link} target="_blank" rel="noopener" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                Live Demo
+                            </a>
+                        )}
+                        {work.data.github && (
+                            <a href={work.data.github} target="_blank" rel="noopener" class="btn btn-secondary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                                GitHub
+                            </a>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screenshot -->
+            {work.data.heroImage && (
+                <div class="screenshot-panel">
+                    <div class="screenshot-label">Screenshot</div>
+                    <Image
+                        src={work.data.heroImage}
+                        alt={`${work.data.title} screenshot`}
+                        class="screenshot-img"
+                        widths={[800, 1200]}
+                        sizes="(max-width:640px) 100vw, 760px"
+                    />
+                </div>
+            )}
+
+            <!-- Content -->
+            <div class="content-panel">
+                <div class="prose">
+                    <Content />
+                </div>
+            </div>
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    .back-link-row {
+        margin-bottom: 1.25rem;
+    }
+
+    .back-link {
+        font-family: 'Bangers', cursive;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        color: var(--accent);
+        text-decoration: none;
+        border: 2px solid var(--black);
+        padding: 4px 14px;
+        box-shadow: 3px 3px 0 var(--black);
+        display: inline-block;
+        transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .back-link:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 var(--black);
+    }
+
+    /* Hero */
+    .hero-panel {
+        border: 3px solid var(--black);
+        background: var(--accent);
+        box-shadow: 6px 6px 0 var(--black);
+        position: relative;
+        overflow: hidden;
+        padding: 2.5rem 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .action-lines {
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(0,0,0,0.08) 10px,
+            rgba(0,0,0,0.08) 20px
+        );
+        pointer-events: none;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .featured-badge {
+        font-family: 'Bangers', cursive;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        background: var(--white);
+        color: var(--accent);
+        border: 2px solid var(--black);
+        padding: 2px 10px;
+        box-shadow: 2px 2px 0 var(--black);
+        display: inline-block;
+        margin-bottom: 0.75rem;
+    }
+
+    h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        color: var(--white);
+        text-shadow: 3px 3px 0 var(--black);
+        -webkit-text-stroke: 2px var(--black);
+        margin: 0 0 0.75rem;
+        line-height: 1.1;
+    }
+
+    .hero-desc {
+        color: var(--white);
+        font-size: 1rem;
+        margin: 0 0 1rem;
+        text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+        max-width: 640px;
+        opacity: 0.95;
+        line-height: 1.6;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .tag {
+        font-family: 'Bangers', cursive;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        color: var(--white);
+        padding: 2px 8px;
+        border: 1.5px solid var(--black);
+        box-shadow: 1.5px 1.5px 0 var(--black);
+    }
+
+    .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-family: 'Bangers', cursive;
+        font-size: 1rem;
+        letter-spacing: 1px;
+        padding: 6px 16px;
+        border: 2px solid var(--black);
+        text-decoration: none;
+        box-shadow: 3px 3px 0 var(--black);
+        transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn:hover {
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 var(--black);
+    }
+
+    .btn-primary {
+        background: var(--white);
+        color: var(--accent);
+    }
+
+    .btn-secondary {
+        background: var(--black);
+        color: var(--white);
+    }
+
+    /* Screenshot */
+    .screenshot-panel {
+        border: 3px solid var(--black);
+        box-shadow: 6px 6px 0 var(--black);
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+
+    .screenshot-label {
+        font-family: 'Bangers', cursive;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: var(--black);
+        color: var(--white);
+        padding: 3px 14px;
+    }
+
+    .screenshot-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border: none;
+        box-shadow: none;
+        max-height: 520px;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    /* Content */
+    .content-panel {
+        border: 3px solid var(--black);
+        background: var(--white);
+        box-shadow: 5px 5px 0 var(--black);
+        padding: 2rem;
+    }
+
+    .prose {
+        max-width: 680px;
+        line-height: 1.8;
+        font-size: 1rem;
+    }
+
+    .prose :global(h2),
+    .prose :global(h3) {
+        font-family: 'Bangers', cursive;
+        letter-spacing: 1px;
+        color: var(--accent);
+        -webkit-text-stroke: 1px var(--black);
+        text-shadow: 2px 2px 0 var(--black);
+    }
+
+    .prose :global(strong) {
+        color: var(--accent);
+    }
+
+    .prose :global(code) {
+        background: var(--gray-light);
+        border: 1.5px solid var(--black);
+        padding: 1px 6px;
+        font-size: 0.88em;
+    }
+
+    .prose :global(pre) {
+        border: 3px solid var(--black);
+        box-shadow: 4px 4px 0 var(--black);
+        padding: 1rem;
+        overflow-x: auto;
+    }
+
+    @media (max-width: 640px) {
+        .hero-panel {
+            padding: 1.5rem 1rem;
+        }
+
+        .content-panel {
+            padding: 1.25rem;
+        }
+    }
+</style>

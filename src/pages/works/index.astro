@@ -1,0 +1,469 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import BaseHead from "../../components/BaseHead.astro";
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import { SITE_TITLE } from "../../consts";
+
+const allWorks = (await getCollection("works")).sort(
+    (a, b) => a.data.order - b.data.order,
+);
+const featuredWorks = allWorks.filter((w) => w.data.featured);
+const otherWorks = allWorks.filter((w) => !w.data.featured);
+
+const tagColors: Record<string, string> = {
+    Astro: "#ff3e00",
+    Laravel: "#ff2d20",
+    "Vue.js": "#42b883",
+    TypeScript: "#3178c6",
+    PHP: "#777bb4",
+    MySQL: "#4479a1",
+    Redis: "#dc382d",
+    Flutter: "#02569b",
+    Dart: "#0175c2",
+    Firebase: "#ffca28",
+    CSS: "#264de4",
+    JAMstack: "#f0047f",
+    "REST API": "#6c757d",
+    SEO: "#34a853",
+    "Tailwind CSS": "#38bdf8",
+    "Anime.js": "#e91e63",
+    React: "#61dafb",
+    "Node.js": "#339933",
+    Python: "#3776ab",
+    JavaScript: "#f7df1e",
+};
+
+function tagColor(tag: string): string {
+    return tagColors[tag] ?? "#555";
+}
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead
+            title={`Works | ${SITE_TITLE}`}
+            description="Portfolio of projects built by Programer Malas — web apps, APIs, mobile apps, and more."
+        />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <!-- Page title panel -->
+            <div class="page-title-panel">
+                <div class="action-lines"></div>
+                <div class="title-content">
+                    <span class="sfx">POW!</span>
+                    <h1>My Works</h1>
+                    <p class="subtitle">
+                        Projects I've shipped — from idea to production.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Featured projects -->
+            {
+                featuredWorks.length > 0 && (
+                    <section class="section-block">
+                        <div class="section-label">⭐ Featured</div>
+                        <div class="works-grid featured-grid">
+                            {featuredWorks.map((work) => (
+                                <article class="work-card featured-card">
+                                    {work.data.heroImage ? (
+                                        <Image
+                                            src={work.data.heroImage}
+                                            alt={`${work.data.title} screenshot`}
+                                            class="card-image"
+                                            widths={[400, 800]}
+                                            sizes="(max-width:640px) 100vw, 400px"
+                                        />
+                                    ) : (
+                                        <div class="card-image-placeholder">
+                                            <span>{work.data.title.charAt(0)}</span>
+                                        </div>
+                                    )}
+                                    <div class="card-header">
+                                        <div class="card-number">
+                                            #
+                                            {work.data.order
+                                                .toString()
+                                                .padStart(2, "0")}
+                                        </div>
+                                        <div class="featured-badge">
+                                            FEATURED
+                                        </div>
+                                    </div>
+                                    <h2 class="card-title">
+                                        {work.data.title}
+                                    </h2>
+                                    <p class="card-desc">
+                                        {work.data.description}
+                                    </p>
+                                    <div class="tags">
+                                        {work.data.tags.map((tag) => (
+                                            <span
+                                                class="tag"
+                                                style={`background:${tagColor(tag)}`}
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                    <div class="card-actions">
+                                        {work.data.link && (
+                                            <a
+                                                href={work.data.link}
+                                                target="_blank"
+                                                rel="noopener"
+                                                class="btn btn-primary"
+                                            >
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="14"
+                                                    height="14"
+                                                    viewBox="0 0 24 24"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    stroke-width="2.5"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                >
+                                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                                    <polyline points="15 3 21 3 21 9" />
+                                                    <line
+                                                        x1="10"
+                                                        y1="14"
+                                                        x2="21"
+                                                        y2="3"
+                                                    />
+                                                </svg>
+                                                Live Demo
+                                            </a>
+                                        )}
+                                        {work.data.github && (
+                                            <a
+                                                href={work.data.github}
+                                                target="_blank"
+                                                rel="noopener"
+                                                class="btn btn-secondary"
+                                            >
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="14"
+                                                    height="14"
+                                                    viewBox="0 0 24 24"
+                                                    fill="currentColor"
+                                                >
+                                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                                                </svg>
+                                                GitHub
+                                            </a>
+                                        )}
+                                        <a
+                                            href={`/works/${work.id}`}
+                                            class="btn btn-outline"
+                                        >
+                                            Read More →
+                                        </a>
+                                    </div>
+                                </article>
+                            ))}
+                        </div>
+                    </section>
+                )
+            }
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    /* ── Page Title Panel ─────────────────────────────────────── */
+    .page-title-panel {
+        border: 3px solid var(--black);
+        background: var(--accent);
+        box-shadow: 6px 6px 0 var(--black);
+        position: relative;
+        overflow: hidden;
+        padding: 3rem 2rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .action-lines {
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(0, 0, 0, 0.08) 10px,
+            rgba(0, 0, 0, 0.08) 20px
+        );
+        pointer-events: none;
+    }
+
+    .title-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+    }
+
+    .sfx {
+        font-family: "Bangers", cursive;
+        font-size: 1.4rem;
+        letter-spacing: 4px;
+        color: var(--white);
+        opacity: 0.7;
+        display: block;
+        -webkit-text-stroke: 1px var(--black);
+    }
+
+    h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        color: var(--white);
+        text-shadow: 4px 4px 0 var(--black);
+        -webkit-text-stroke: 2px var(--black);
+        margin: 0.25rem 0;
+        line-height: 1;
+    }
+
+    .subtitle {
+        color: var(--white);
+        font-size: 1.1rem;
+        margin: 0.5rem 0 0;
+        text-shadow: 1px 1px 0 var(--black);
+        opacity: 0.9;
+    }
+
+    /* ── Section ──────────────────────────────────────────────── */
+    .section-block {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-label {
+        font-family: "Bangers", cursive;
+        font-size: 1.4rem;
+        letter-spacing: 2px;
+        border-left: 5px solid var(--accent);
+        padding-left: 0.75rem;
+        margin-bottom: 1.25rem;
+        color: var(--black);
+    }
+
+    /* ── Grid layouts ─────────────────────────────────────────── */
+    .works-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .featured-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .other-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+
+    /* ── Cards ────────────────────────────────────────────────── */
+    .work-card {
+        border: 3px solid var(--black);
+        background: var(--white);
+        box-shadow: 5px 5px 0 var(--black);
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        transition:
+            transform 0.18s,
+            box-shadow 0.18s;
+        position: relative;
+    }
+
+    .work-card:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 8px 8px 0 var(--black);
+    }
+
+    .featured-card {
+        border-width: 3px;
+        padding: 0;
+    }
+
+    .featured-card .card-header,
+    .featured-card .card-title,
+    .featured-card .card-desc,
+    .featured-card .tags,
+    .featured-card .card-actions {
+        padding: 0 1.5rem;
+    }
+
+    .featured-card .card-header {
+        padding-top: 1rem;
+    }
+
+    .featured-card .card-actions {
+        padding-bottom: 1.5rem;
+    }
+
+    .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border: none;
+        box-shadow: none;
+        border-bottom: 3px solid var(--black);
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .card-image-placeholder {
+        width: 100%;
+        height: 160px;
+        background: repeating-linear-gradient(
+            45deg,
+            var(--gray-light),
+            var(--gray-light) 10px,
+            var(--white) 10px,
+            var(--white) 20px
+        );
+        border-bottom: 3px solid var(--black);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .card-image-placeholder span {
+        font-family: "Bangers", cursive;
+        font-size: 4rem;
+        color: var(--black);
+        opacity: 0.15;
+        line-height: 1;
+    }
+
+    .other-card {
+        background: var(--gray-light);
+    }
+
+    /* Card header row */
+    .card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    .card-number {
+        font-family: "Bangers", cursive;
+        font-size: 1rem;
+        color: var(--gray);
+        letter-spacing: 1px;
+    }
+
+    .featured-badge {
+        font-family: "Bangers", cursive;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+        background: var(--accent);
+        color: var(--white);
+        border: 2px solid var(--black);
+        padding: 2px 8px;
+        box-shadow: 2px 2px 0 var(--black);
+    }
+
+    /* Card title */
+    .card-title {
+        font-size: 1.4rem;
+        margin: 0;
+        color: var(--black);
+        line-height: 1.2;
+    }
+
+    /* Card description */
+    .card-desc {
+        font-size: 0.92rem;
+        color: var(--gray);
+        margin: 0;
+        line-height: 1.6;
+        flex: 1;
+    }
+
+    /* Tags */
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .tag {
+        font-family: "Bangers", cursive;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        color: var(--white);
+        padding: 2px 8px;
+        border: 1.5px solid var(--black);
+        box-shadow: 1.5px 1.5px 0 var(--black);
+    }
+
+    /* Buttons */
+    .card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.25rem;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-family: "Bangers", cursive;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        padding: 5px 14px;
+        border: 2px solid var(--black);
+        text-decoration: none;
+        box-shadow: 3px 3px 0 var(--black);
+        transition:
+            transform 0.15s,
+            box-shadow 0.15s;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        transform: translate(-1px, -1px);
+        box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .btn-primary {
+        background: var(--accent);
+        color: var(--white);
+    }
+
+    .btn-secondary {
+        background: var(--black);
+        color: var(--white);
+    }
+
+    .btn-outline {
+        background: transparent;
+        color: var(--black);
+    }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 640px) {
+        .featured-grid,
+        .other-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .page-title-panel {
+            padding: 2rem 1rem;
+        }
+    }
+</style>
