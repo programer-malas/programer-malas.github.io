@@ -5,7 +5,8 @@ tags: []
 # github: ""
 heroImage: "../../assets/works/psyco.webp"
 featured: true
-order: 3
+order: 4
+link: "https://mumojayaabadi.com/"
 ---
 Mumo Jaya Abadi is an online psychological testing platform in Indonesia specifically designed for obtaining or renewing driver's licenses (SIM). Its services comply with Indonesian National Police Regulation No. 5 of 2021, providing a convenient and accessible way for users to complete the required psychological assessments online and receive their results promptly.
 
