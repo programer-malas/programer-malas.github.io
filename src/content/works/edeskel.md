@@ -2,7 +2,6 @@
 title: "Edeskel"
 description: "Edeskel (edeskel.id) is a comprehensive digital platform designed to modernize village and sub-district administration in Indonesia by transforming traditional workflows into a streamlined, paperless ecosystem."
 tags: []
-# github: ""
 heroImage: "../../assets/works/edeskel.webp"
 featured: true
 order: 3

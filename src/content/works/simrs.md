@@ -2,7 +2,6 @@
 title: "Hospital Management System (SIMRS)"
 description: "A comprehensive hospital management system for managing patient information, medical records, billing, and other hospital operations."
 tags: []
-# github: ""
 heroImage: "../../assets/works/simrs.webp"
 featured: true
 order: 5
