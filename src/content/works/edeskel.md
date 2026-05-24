@@ -5,7 +5,7 @@ tags: []
 # github: ""
 heroImage: "../../assets/works/edeskel.webp"
 featured: true
-order: 2
+order: 3
 link: "https://edeskel.id/"
 ---
 

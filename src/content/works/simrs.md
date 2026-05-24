@@ -5,7 +5,7 @@ tags: []
 # github: ""
 heroImage: "../../assets/works/simrs.webp"
 featured: true
-order: 3
+order: 5
 ---
 SIMRS (Sistem Informasi Manajemen Rumah Sakit) is an integrated information technology system designed to manage the entire clinical and administrative workflow of a hospital. It acts as the "digital nervous system" of a healthcare facility, ensuring that data flows seamlessly between different departments.
 
