@@ -4,7 +4,7 @@ description: "Mulaikarir is a streamlined job portal designed to bridge the gap 
 tags: []
 heroImage: "../../assets/works/mulaikarir.webp"
 featured: true
-order: 1
+order: 6
 ---
 **Mulaikarir** is a streamlined job portal designed to bridge the gap between ambitious professionals and innovative companies. By focusing on intelligent matching and a frictionless application experience, we help candidates find roles that align with their career goals while enabling recruiters to discover high-quality talent efficiently.
 
