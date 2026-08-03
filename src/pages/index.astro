@@ -12,425 +12,705 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
     </head>
     <body>
         <Header />
-        <main>
-            <div class="comic-grid">
-                <div class="panel hero-panel">
-                    <h1>SOFTWARE<br />ENGINEER</h1>
-                    <div class="action-lines"></div>
-                </div>
+        
+        <main class="full-bleed">
+            <!-- HERO SECTION (Persona 5 Game Menu UI Layout) -->
+            <section class="hero-section p5-layout">
+                <!-- Slanted Background Stripes -->
+                <div class="p5-bg-stripe stripe-red"></div>
+                <div class="p5-bg-stripe stripe-white"></div>
+                <div class="p5-bg-grid"></div>
 
-                <div class="panel profile-panel">
-                    <img
-                        src="/avatar/programerMalas.webp"
-                        alt="Profile Picture"
-                    />
-                    <div class="caption-box">Programer Malas</div>
-                </div>
+                <!-- Floating Star Decors (Iconic P5 styling) -->
+                <div class="p5-star star-large">★</div>
+                <div class="p5-star star-medium">★</div>
+                <div class="p5-star star-small">★</div>
+                <div class="p5-star star-outline">☆</div>
 
-                <div class="panel intro-panel">
-                    <div class="speech-bubble">
-                        <p>
-                            <strong>Yo!</strong>
-                            I am a Software Engineer with <br /> over 11 years of
-                            experience building impactful digital products.
-                        </p>
-                        <p>
-                            I’m also a frequent tech speaker who loves mentoring
-                            developers and leading teams to deliver great
-                            software.
-                        </p>
+                <!-- Slanted Marquee Overlay (Ransom note black & red ticker) -->
+                <div class="diagonal-ticker p5-ticker">
+                    <div class="ticker-text">
+                        TO THOSE WHO DIDN'T FIT THE MOLD • TO THOSE WHO DIDN'T FIT THE MOLD • TO THOSE WHO DIDN'T FIT THE MOLD • TO THOSE WHO DIDN'T FIT THE MOLD •
                     </div>
                 </div>
 
-                <div class="panel social-panel">
-                    <div class="social-label">Find Me On</div>
-                    <div class="social-badges">
-                        <a
-                            href="https://github.com/aliemtakarai"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="social-badge github"
-                            aria-label="GitHub"
-                        >
-                            <svg
-                                class="badge-icon"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
-                                ></path>
-                            </svg>
-                            <span>GitHub</span>
-                        </a>
+                <div class="hero-container-p5">
+                    <!-- Jagged Menu Item Group (Ransom note collage style) -->
+                    <div class="p5-menu-group">
+                        <div class="p5-menu-item item-free">
+                            <span class="p5-word font-bangers">FREE</span>
+                        </div>
+                        <div class="p5-menu-item item-your">
+                            <span class="p5-word font-space">YOUR</span>
+                        </div>
+                        <div class="p5-menu-item item-self">
+                            <span class="p5-word font-outfit">SELF</span>
+                        </div>
+                    </div>
 
-                        <a
-                            href="https://www.linkedin.com/in/aliem-arif-perkasa/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="social-badge linkedin"
-                            aria-label="LinkedIn"
-                        >
-                            <svg
-                                class="badge-icon"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                                ></path>
-                            </svg>
-                            <span>LinkedIn</span>
+                    <!-- Tech Subtext styled like a P5 status window -->
+                    <div class="p5-status-window">
+                        <div class="p5-status-header">
+                            <span class="p5-dot"></span>
+                            <span class="p5-status-title">COGNITION_PHANTOM</span>
+                        </div>
+                        <p class="p5-status-desc">
+                            A software engineer with over 11 years of experience, building automation tools and high-performance digital systems.
+                        </p>
+                    </div>
+
+                    <!-- Persona Stylized Action Button -->
+                    <div class="p5-actions">
+                        <a href="/works" class="btn-p5">
+                            <span class="btn-p5-arrow">➤</span>
+                            <span class="btn-p5-text">ENTER WORK AREA</span>
                         </a>
                     </div>
                 </div>
 
-                <div class="panel content-panel">
-                    <h2>Latest Transmission</h2>
-                    <p>
-                        I serve as <strong>Assistant Manager</strong> at <strong
-                            >Ejen2u International Sdn Bhd</strong
-                        >, leading the Fullstack Development team
-                    </p>
+                <!-- Scroll Tracker (Slanted P5 look) -->
+                <div class="hero-scroll-indicator">
+                    <span class="scroll-label">TAKE YOUR TIME</span>
+                    <div class="scroll-vertical-line"></div>
                 </div>
-            </div>
+            </section>
+
+            <!-- MESSAGE SECTION (Persona 5 style - Spacious layout like new.jpg) -->
+            <section class="message-section p5-msg-section">
+                <div class="p5-section-divider"></div>
+                
+                <div class="message-container">
+                    <!-- Text Side (Left, spacious layout matching new.jpg layout) -->
+                    <div class="message-text-side">
+                        <div class="message-title-group p5-title-group">
+                            <h2 class="message-title-en">MESSAGE</h2>
+                            <span class="message-title-jp">PHILOSOPHY</span>
+                            <div class="p5-title-star">★</div>
+                        </div>
+
+                        <!-- Dialogue Intro Text (Floating like in new.jpg) -->
+                        <div class="message-intro-jp p5-intro-text">
+                            <p>Even if you're awkward, even if you're stubborn,</p>
+                            <p>Even if you're a daydreamer or an outcast,</p>
+                            <p>Even if you're eccentric, it's fine.</p>
+                        </div>
+
+                        <!-- Cardboard Cutout Highlights (Jagged borders & heavy P5 skews) -->
+                        <div class="message-highlight-blocks p5-highlight-blocks">
+                            <div class="highlight-block-wrapper">
+                                <span class="highlight-block p5-highlight black-bg">THOSE WHO WANT TO</span>
+                            </div>
+                            <div class="highlight-block-wrapper">
+                                <span class="highlight-block p5-highlight white-bg">UNLEASH THEIR ABILITIES,</span>
+                            </div>
+                            <div class="highlight-block-wrapper">
+                                <span class="highlight-block p5-highlight red-bg">GATHER HERE.</span>
+                            </div>
+                        </div>
+
+                        <!-- Body copy paragraphs (Floating layout) -->
+                        <div class="message-body-jp p5-body-text">
+                            <p>Not "doesn't fit in molds", but "cannot fit in molds."</p>
+                            <p>That is your weapon, your unique "individuality."</p>
+                            <p>Others might call it "stubbornness" or "selfishness."</p>
+                            <p>But it is undoubtedly the potential and light that only you possess.</p>
+                            <p>We are searching for such outstanding talent.</p>
+                            <p>A powerful individuality held by those who are freer than anyone.</p>
+                            <p>The hidden abilities sleeping inside you that have never seen the spotlight.</p>
+                            <p>Here, you will be able to unleash that power to your heart's content.</p>
+                        </div>
+
+                        <div class="message-cta-wrapper">
+                            <a href="/works" class="btn-pill-arrow p5-pill-arrow">
+                                TO DESIRED PROFILE <span class="arrow-symbol">★</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Image Side (Right, large graphic block) -->
+                    <div class="message-image-side">
+                        <div class="polygon-bg-wrapper p5-polygon-wrapper">
+                            <div class="polygon-bg p5-polygon-bg"></div>
+                            <img
+                                src="/message_characters.jpg"
+                                alt="Message Characters"
+                                class="message-character-img p5-message-img"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
+        
         <Footer />
     </body>
 </html>
 
 <style>
-    .comic-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 1.5rem;
+    /* ── Persona 5 Styling Core Variables ── */
+    :root {
+        --p5-red: #e60012;
+        --p5-black: #000000;
+        --p5-white: #ffffff;
+        --p5-gray: #1a1a1a;
     }
 
-    .panel {
-        border: 3px solid var(--black);
-        padding: 1.5rem;
-        background: var(--white);
-        box-shadow: 5px 5px 0 var(--black);
+    /* ── Hero Section (Persona 5 Layout) ── */
+    .hero-section.p5-layout {
         position: relative;
-        overflow: hidden;
-        transition: transform 0.2s;
-    }
-
-    .panel:hover {
-        transform: translate(-2px, -2px);
-        box-shadow: 7px 7px 0 var(--black);
-    }
-
-    .hero-panel {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-        background-color: var(--accent);
-        color: var(--white);
+        width: 100%;
+        height: 100vh;
+        background-color: var(--p5-black);
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 300px;
-        transform: rotate(-1deg);
-        z-index: 2;
+        overflow: hidden;
+        padding: 0;
     }
 
-    .profile-panel {
-        grid-column: 2 / 3;
-        grid-row: 1 / 2;
-        padding: 0;
+    /* Sharp Slanted Background Stripes */
+    .p5-bg-stripe {
+        position: absolute;
+        height: 150%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .stripe-red {
+        width: 45%;
+        left: -10%;
+        top: -25%;
+        background: var(--p5-red);
+        transform: rotate(-18deg);
+        box-shadow: 15px 0 0 var(--p5-white);
+    }
+
+    .stripe-white {
+        width: 25%;
+        right: 5%;
+        bottom: -25%;
+        background: var(--p5-white);
+        transform: rotate(-15deg);
+        box-shadow: -15px 0 0 var(--p5-red);
+        opacity: 0.95;
+    }
+
+    .p5-bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 2px, transparent 2px, transparent 20px);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    /* Giant floating stars (P5 motif) */
+    .p5-star {
+        position: absolute;
+        font-weight: 900;
+        user-select: none;
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .star-large {
+        font-size: 15rem;
+        color: var(--p5-black);
+        top: -5%;
+        right: 15%;
+        transform: rotate(25deg);
+        text-shadow: 0 0 20px rgba(230, 0, 18, 0.4);
+    }
+
+    .star-medium {
+        font-size: 8rem;
+        color: var(--p5-red);
+        bottom: 10%;
+        left: 25%;
+        transform: rotate(-15deg);
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
+
+    .star-small {
+        font-size: 4rem;
+        color: var(--p5-white);
+        top: 20%;
+        left: 10%;
+        transform: rotate(45deg);
+    }
+
+    .star-outline {
+        font-size: 6rem;
+        color: var(--p5-red);
+        bottom: 30%;
+        right: 10%;
+        transform: rotate(5deg);
+    }
+
+    /* Slanted Marquee Ticker Overlay */
+    .diagonal-ticker.p5-ticker {
+        position: absolute;
+        bottom: 15%;
+        transform: rotate(-6deg);
+        z-index: 8;
+        width: 150%;
+        left: -25%;
+        background: var(--p5-black);
+        border-top: 4px solid var(--p5-red);
+        border-bottom: 4px solid var(--p5-white);
+        padding: 0.8rem 0;
+        display: flex;
+        pointer-events: none;
+    }
+
+    .p5-ticker .ticker-text {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 900;
+        letter-spacing: 3px;
+        color: var(--p5-white);
+        text-shadow: 2px 2px 0 var(--p5-red);
+        white-space: nowrap;
+        animation: marquee-scroll 20s linear infinite;
+        display: inline-block;
+    }
+
+    @keyframes marquee-scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* Main Content Container */
+    .hero-container-p5 {
+        position: relative;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        z-index: 10;
+        padding-top: 4rem;
     }
 
-    .profile-panel img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border: none;
-        box-shadow: none;
+    /* P5 Menu Group (Ransom Note Cutout Style) */
+    .p5-menu-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        margin-bottom: 3.5rem;
     }
 
-    .caption-box {
-        background: var(--black);
-        color: var(--white);
-        font-family: "Bangers", cursive;
-        text-align: center;
-        padding: 0.5rem;
-        font-size: 1.2rem;
-        letter-spacing: 1px;
+    .p5-menu-item {
+        display: inline-block;
+        transition: transform 0.2s ease;
+        align-self: center;
     }
 
-    .hero-panel h1 {
-        color: var(--white);
-        text-shadow: 4px 4px 0 var(--black);
-        font-size: 3.5rem;
-        text-align: center;
+    .p5-word {
+        display: inline-block;
+        font-size: clamp(4.5rem, 11vw, 9.5rem);
+        font-weight: 900;
+        letter-spacing: -2px;
+        padding: 0.6rem 2.5rem;
         line-height: 0.9;
-        z-index: 2;
-        -webkit-text-stroke: 2px var(--black);
+        text-transform: uppercase;
+        border: 4px solid var(--p5-black);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    .action-lines {
+    .item-free {
+        transform: rotate(-4deg) translateX(-40px) skewX(-10deg);
+    }
+
+    .item-free .p5-word {
+        background: var(--p5-black);
+        color: var(--p5-white);
+        border-color: var(--p5-white);
+        box-shadow: 10px 10px 0 var(--p5-red);
+    }
+
+    .item-your {
+        transform: rotate(3deg) skewY(4deg);
+    }
+
+    .item-your .p5-word {
+        background: var(--p5-white);
+        color: var(--p5-black);
+        box-shadow: -10px 10px 0 var(--p5-black);
+    }
+
+    .item-self {
+        transform: rotate(-2deg) translateX(40px) skewX(12deg);
+    }
+
+    .item-self .p5-word {
+        background: var(--p5-red);
+        color: var(--p5-white);
+        border-color: var(--p5-white);
+        box-shadow: 10px -8px 0 var(--p5-white);
+    }
+
+    /* Hover reactions for cardboard cutouts */
+    .p5-menu-item:hover {
+        transform: scale(1.1) rotate(0deg) translateX(0) skewX(0);
+    }
+
+    .p5-menu-item:hover .p5-word {
+        box-shadow: 0 0 30px var(--p5-red);
+    }
+
+    /* Font configurations for ransom note effect */
+    .font-bangers {
+        font-family: 'Bangers', cursive;
+        letter-spacing: 2px;
+    }
+
+    .font-space {
+        font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .font-outfit {
+        font-family: 'Outfit', sans-serif;
+    }
+
+    /* Status Window Card (Cardboard look) */
+    .p5-status-window {
+        background: var(--p5-black);
+        border: 3px solid var(--p5-white);
+        padding: 1.2rem 2rem;
+        max-width: 480px;
+        transform: rotate(-2deg) skewX(-8deg);
+        box-shadow: 8px 8px 0 var(--p5-red);
+        margin-bottom: 3.5rem;
+    }
+
+    .p5-status-header {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        border-bottom: 2px solid var(--p5-red);
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .p5-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--p5-red);
+        border-radius: 50%;
+        box-shadow: 0 0 8px var(--p5-red);
+    }
+
+    .p5-status-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        color: var(--p5-white);
+    }
+
+    .p5-status-desc {
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #d1cde3;
+        margin: 0;
+    }
+
+    /* Persona Action Button */
+    .btn-p5 {
+        display: inline-flex;
+        align-items: center;
+        gap: 1.2rem;
+        background: var(--p5-red);
+        color: var(--p5-white);
+        border: 3px solid var(--p5-white);
+        padding: 0.8rem 2.5rem;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        text-decoration: none;
+        transform: rotate(2deg) skewX(-10deg);
+        box-shadow: 8px 8px 0 var(--p5-black);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .btn-p5-arrow {
+        color: var(--p5-white);
+        transition: transform 0.3s ease;
+    }
+
+    .btn-p5:hover {
+        background: var(--p5-white);
+        color: var(--p5-black);
+        border-color: var(--p5-black);
+        box-shadow: -8px 8px 0 var(--p5-red);
+        transform: scale(1.05) rotate(-1deg) skewX(-5deg);
+    }
+
+    .btn-p5:hover .btn-p5-arrow {
+        transform: translateX(5px);
+        color: var(--p5-black);
+    }
+
+    /* Scroll Indicator P5 Look */
+    .hero-section .hero-scroll-indicator {
+        position: absolute;
+        right: 3rem;
+        bottom: 3.5rem;
+        z-index: 15;
+    }
+
+    .hero-section .scroll-label {
+        color: var(--p5-white);
+        font-weight: 900;
+        text-shadow: 2px 2px 0 var(--p5-red);
+    }
+
+    .hero-section .scroll-vertical-line {
+        background: linear-gradient(180deg, var(--p5-white) 0%, transparent 100%);
+    }
+
+    .hero-section .scroll-vertical-line::after {
+        background: var(--p5-red);
+        box-shadow: 0 0 10px var(--p5-red);
+    }
+
+
+    /* ── Message Section (Persona 5 Redesign) ── */
+    .message-section.p5-msg-section {
+        background-color: var(--p5-black);
+        border-top: 8px solid var(--p5-red);
+        position: relative;
+        padding: 10rem 2rem;
+    }
+
+    .p5-section-divider {
         position: absolute;
         top: 0;
         left: 0;
-        right: 0;
-        bottom: 0;
-        background: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            rgba(0, 0, 0, 0.1) 10px,
-            rgba(0, 0, 0, 0.1) 20px
-        );
-        z-index: 1;
+        width: 100%;
+        height: 6px;
+        background: var(--p5-red);
+        box-shadow: 0 0 15px var(--p5-red);
     }
 
-    .intro-panel {
-        grid-column: 1 / -1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: var(--gray-light);
-        min-height: 150px;
-    }
-
-    .speech-bubble {
-        background: var(--white);
-        border: 3px solid var(--black);
-        padding: 1.5rem;
-        border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    .message-container {
         position: relative;
-        max-width: 400px;
-        text-align: center;
-        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-    }
-
-    .speech-bubble::after {
-        content: "";
-        position: absolute;
-        top: -20px;
-        right: 20%;
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 0px solid transparent;
-        border-bottom: 20px solid var(--black);
-    }
-    .speech-bubble::before {
-        content: "";
-        position: absolute;
-        top: -13px;
-        right: 21%;
-        width: 0;
-        height: 0;
-        border-left: 16px solid transparent;
-        border-right: 0px solid transparent;
-        border-bottom: 16px solid var(--white);
-        z-index: 1;
-    }
-
-    .content-panel {
-        grid-column: 1 / -1;
-    }
-
-    .highlight {
-        background: linear-gradient(
-            120deg,
-            var(--accent) 0%,
-            var(--accent) 100%
-        );
-        background-repeat: no-repeat;
-        background-size: 100% 0.3em;
-        background-position: 0 88%;
-        font-weight: bold;
-    }
-
-    .cta-container {
-        margin-top: 1.5rem;
-        display: flex;
-        gap: 1rem;
-    }
-
-    .btn.secondary {
-        background: var(--black);
-        color: var(--white);
-    }
-
-    .graphics-panel {
-        background: var(--black);
-        color: var(--white);
-        display: flex;
+        max-width: 1300px;
+        width: 100%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr; /* Restore spacious two-column grid layout like new.jpg */
+        gap: 5rem;
         align-items: center;
-        justify-content: center;
-        text-align: center;
+        z-index: 5;
     }
 
-    .graphics-panel h3 {
-        color: var(--white);
-        border: 2px solid var(--white);
-        padding: 0.5rem;
-        transform: rotate(3deg);
-    }
-
-    /* ── Social badges panel ── */
-    .social-panel {
-        grid-column: 1 / -1;
+    /* Spacious text column (no dialog box wrapper, matching new.jpg layout spacing) */
+    .message-text-side {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        background: var(--gray-light);
-        padding: 1.5rem;
     }
 
-    .social-label {
-        font-family: "Bangers", cursive;
-        font-size: 1.4rem;
+    /* Title Panel with star decoration */
+    .p5-title-group {
+        position: relative;
+        margin-bottom: 3rem;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 1.5rem;
+    }
+
+    .p5-title-star {
+        position: absolute;
+        font-size: 3rem;
+        color: var(--p5-red);
+        top: -1.5rem;
+        left: 12rem;
+        transform: rotate(15deg);
+    }
+
+    .p5-intro-text {
+        font-family: 'Outfit', sans-serif;
+        color: var(--p5-white) !important;
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin-bottom: 2.5rem;
+    }
+
+    .p5-intro-text p {
+        margin: 0 0 0.5rem 0;
+    }
+
+    /* Cardboard Dialog Blocks skew P5 style */
+    .p5-highlight-blocks {
+        gap: 0.6rem;
+        align-items: flex-start;
+        margin-bottom: 3rem;
+    }
+
+    .p5-highlight {
+        font-family: 'Bangers', cursive;
         letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--black);
-        border: 3px solid var(--black);
-        background: var(--accent);
-        color: var(--white);
-        padding: 2px 14px;
-        box-shadow: 3px 3px 0 var(--black);
-        transform: rotate(-1deg);
+        font-size: clamp(1.4rem, 3.5vw, 2.5rem) !important;
+        border: 3px solid var(--p5-black);
+        padding: 0.6rem 2rem !important;
+        display: inline-block;
     }
 
-    .social-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        justify-content: center;
+    .p5-highlight.black-bg {
+        background: var(--p5-black) !important;
+        color: var(--p5-white) !important;
+        border-color: var(--p5-white);
+        box-shadow: 5px 5px 0 var(--p5-red);
     }
 
-    .social-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1.1rem;
-        border: 3px solid var(--black);
-        box-shadow: 4px 4px 0 var(--black);
-        font-family: "Bangers", cursive;
-        font-size: 1.1rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        text-decoration: none;
-        transition:
-            transform 0.15s,
-            box-shadow 0.15s;
-        border-radius: 0;
-        /* override global a:hover */
-        background: var(--white);
-        color: var(--black);
-        border-bottom: 3px solid var(--black);
-        margin: 0;
+    .p5-highlight.white-bg {
+        background: var(--p5-white) !important;
+        color: var(--p5-black) !important;
+        box-shadow: -5px 5px 0 var(--p5-black);
     }
 
-    .social-badge:hover {
-        transform: translate(-3px, -3px);
-        box-shadow: 7px 7px 0 var(--black);
-        /* reset global overrides */
-        background: var(--white);
-        color: var(--black);
-        padding: 0.5rem 1.1rem;
-        margin: 0;
-        border: 3px solid var(--black);
+    .p5-highlight.red-bg {
+        background: var(--p5-red) !important;
+        color: var(--p5-white) !important;
+        border-color: var(--p5-white);
+        box-shadow: 5px -5px 0 var(--p5-white);
     }
 
-    .social-badge:active {
-        transform: translate(2px, 2px);
-        box-shadow: 2px 2px 0 var(--black);
+    .p5-body-text {
+        font-family: 'Outfit', sans-serif;
+        color: #8b83a3 !important;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 3.5rem;
     }
 
-    /* Per-platform accent colours */
-    .social-badge.github {
-        background: #24292e;
-        color: #fff;
-    }
-    .social-badge.github:hover {
-        background: #24292e;
-        color: #fff;
+    .p5-body-text p {
+        margin: 0 0 1rem 0;
     }
 
-    .social-badge.linkedin {
-        background: #0077b5;
-        color: #fff;
-    }
-    .social-badge.linkedin:hover {
-        background: #0077b5;
-        color: #fff;
-    }
-
-    .social-badge.twitter {
-        background: #000;
-        color: #fff;
-    }
-    .social-badge.twitter:hover {
-        background: #000;
-        color: #fff;
+    /* P5 arrow pill button */
+    .p5-pill-arrow {
+        background: var(--p5-black) !important;
+        color: var(--p5-white) !important;
+        border: 2px solid var(--p5-red) !important;
+        transform: rotate(-1.5deg);
+        align-self: flex-start;
     }
 
-    .social-badge.instagram {
-        background: linear-gradient(
-            135deg,
-            #f09433,
-            #e6683c,
-            #dc2743,
-            #cc2366,
-            #bc1888
-        );
-        color: #fff;
-    }
-    .social-badge.instagram:hover {
-        background: linear-gradient(
-            135deg,
-            #f09433,
-            #e6683c,
-            #dc2743,
-            #cc2366,
-            #bc1888
-        );
-        color: #fff;
+    .p5-pill-arrow:hover {
+        background: var(--p5-red) !important;
+        color: var(--p5-white) !important;
+        border-color: var(--p5-white) !important;
+        box-shadow: 0 0 20px var(--p5-red) !important;
     }
 
-    .badge-icon {
-        width: 20px;
-        height: 20px;
-        flex-shrink: 0;
-        border: none;
-        box-shadow: none;
+    /* Overlapping character portrait on the right */
+    .p5-polygon-wrapper {
+        transform: rotate(2deg);
+        width: 100%;
+        max-width: 480px;
+        position: relative;
+    }
+
+    .p5-polygon-bg {
+        background: linear-gradient(135deg, var(--p5-red), var(--p5-black)) !important;
+        clip-path: polygon(5% 0%, 100% 10%, 95% 100%, 0% 90%) !important;
+    }
+
+    .p5-message-img {
+        border: 4px solid var(--p5-white) !important;
+        box-shadow: 10px 10px 0 var(--p5-red) !important;
+        transform: rotate(-2deg);
+        width: 100%;
+        height: auto;
         display: block;
     }
 
-    @media (max-width: 768px) {
-        .comic-grid {
-            grid-template-columns: 1fr;
-            grid-template-rows: auto;
+
+    /* ── Responsive Adaptations ── */
+    @media (max-width: 992px) {
+        .stripe-red, .stripe-white {
+            width: 100%;
+            height: 100%;
+            transform: none;
+            opacity: 0.15;
+            left: 0;
+            top: 0;
         }
 
-        .hero-panel,
-        .profile-panel,
-        .intro-panel {
-            grid-column: auto;
-            grid-row: auto;
+        .hero-section.p5-layout {
+            padding: 8rem 1.5rem 5rem;
+            height: auto;
+            min-height: 100vh;
         }
 
-        .hero-panel {
-            transform: rotate(0deg);
+        .p5-menu-group {
+            gap: 1.5rem;
         }
 
-        .speech-bubble {
-            max-width: 100%;
-            border-radius: 12px;
+        .p5-menu-item {
+            transform: none !important;
         }
-        .speech-bubble::after,
-        .speech-bubble::before {
+
+        .p5-word {
+            font-size: clamp(3rem, 12vw, 5.5rem);
+            padding: 0.5rem 1.5rem;
+        }
+
+        .p5-star {
             display: none;
+        }
+
+        .diagonal-ticker.p5-ticker {
+            transform: none;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .message-container {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        .message-text-side {
+            align-items: center;
+            text-align: center;
+        }
+
+        .message-title-group {
+            align-items: center;
+        }
+
+        .p5-title-star {
+            display: none;
+        }
+
+        .message-highlight-blocks {
+            align-items: center;
+        }
+
+        .message-image-side {
+            order: -1; /* Display image on top in mobile layouts */
+            margin-bottom: 2rem;
+        }
+
+        .p5-polygon-wrapper {
+            max-width: 380px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .hero-section .hero-scroll-indicator {
+            display: none;
+        }
+
+        .message-section.p5-msg-section {
+            padding: 6rem 1rem;
         }
     }
 </style>

@@ -3,35 +3,94 @@ const today = new Date();
 ---
 
 <footer>
-    &copy; {today.getFullYear()} All rights reserved.
-    <div class="social-links"></div>
+    <div class="footer-content">
+        <div class="footer-branding">
+            <span class="footer-title">PROGRAMER MALAS</span>
+            <span class="footer-tagline">AUTOMATING THE BORING STUFF WITH STYLE / THE PINNACLE OF EFFICIENCY</span>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-copyright">
+            &copy; {today.getFullYear()} PROGRAMER MALAS. ALL RIGHTS RESERVED.
+        </div>
+    </div>
 </footer>
+
 <style>
     footer {
-        padding: 4em 1em;
-        background: var(--white);
-        color: var(--black);
-        text-align: center;
-        border-top: var(--border-width) solid var(--black);
+        padding: 4rem 2rem;
+        background: #000000;
+        border-top: 6px solid #e60012;
+        color: #d1cde3;
         margin-top: auto;
+        position: relative;
     }
-    .social-links {
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
         display: flex;
-        justify-content: center;
-        gap: 1em;
-        margin-top: 1em;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
     }
-    .social-links a {
-        text-decoration: none;
-        color: var(--black);
-        transition: transform 0.2s;
+
+    .footer-branding {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
     }
-    .social-links a:hover {
-        color: var(--accent);
-        transform: scale(1.2);
-        background: transparent;
-        box-shadow: none;
-        border: none;
-        margin: 0;
+
+    .footer-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        color: #ffffff;
+        text-shadow: 3px 3px 0 #e60012;
+        text-transform: uppercase;
+        transform: rotate(-1.5deg) skewX(-10deg);
+        background: #000000;
+        border: 2px solid #ffffff;
+        padding: 2px 14px;
+        box-shadow: 4px 4px 0 #e60012;
+    }
+
+    .footer-tagline {
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        color: #8b83a3;
+        text-transform: uppercase;
+        margin-top: 0.5rem;
+    }
+
+    .footer-divider {
+        width: 80px;
+        height: 3px;
+        background: #e60012;
+        box-shadow: 0 0 10px rgba(230, 0, 18, 0.5);
+    }
+
+    .footer-copyright {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #635b77;
+    }
+
+    @media (max-width: 768px) {
+        footer {
+            padding: 3rem 1rem;
+        }
+        .footer-title {
+            font-size: 1.1rem;
+        }
+        .footer-tagline {
+            font-size: 0.65rem;
+        }
     }
 </style>

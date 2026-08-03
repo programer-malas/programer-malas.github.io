@@ -1,22 +1,22 @@
 /*
-  Manga Style Theme
+  Persona 5 Game UI Style Theme
  */
 
 :root {
-	--accent: #ff0055;
-	--accent-dark: #990033;
+	--accent: #e60012;
+	--accent-dark: #9e000c;
 	--black: #000000;
 	--white: #ffffff;
-	--gray-light: #f4f4f4;
+	--gray-light: #161026;
+	--gray-dark: #000000;
 
-	--text-color: var(--black);
-	--bg-color: var(--white);
-	--border-color: var(--black);
+	--text-color: var(--white);
+	--bg-color: var(--black);
+	--border-color: var(--white);
 
-	--border-width: 3px;
-	--shadow-offset: 6px;
-	--radius: 8px;
-	/* Slightly rounded but solid */
+	--border-width: 4px;
+	--shadow-offset: 8px;
+	--radius: 0px;
 }
 
 *,
@@ -42,31 +42,71 @@
 }
 
 body {
-	font-family: "Atkinson", sans-serif;
+	font-family: 'Outfit', sans-serif;
 	margin: 0;
 	padding: 0;
 	text-align: left;
 	background-color: var(--bg-color);
-	/* Halftone dot pattern */
-	background-image: radial-gradient(var(--black) 1px, transparent 1px);
-	background-size: 20px 20px;
+	/* P5 Red dots background pattern */
+	background-image: radial-gradient(rgba(230, 0, 18, 0.15) 1.5px, transparent 1.5px);
+	background-size: 24px 24px;
 	color: var(--text-color);
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 1.6;
+	overflow-x: hidden;
 }
 
-main {
-	width: 800px;
+main:not(.full-bleed) {
+	--accent: #e60012;
+	--text-color: #ffffff;
+	--bg-color: #1a1a1a;
+	--border-color: #ffffff;
+	
+	width: 900px;
 	max-width: calc(100% - 2em);
 	margin: auto;
-	padding: 3em 1em;
-	background: var(--white);
-	border: var(--border-width) solid var(--border-color);
-	box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	padding: 3em 2em;
+	background: #1a1a1a;
+	border: 4px solid #ffffff;
+	box-shadow: 10px 10px 0 #e60012;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
 	position: relative;
-	border-radius: var(--radius);
+	border-radius: 0px;
+	color: #ffffff;
+	transform: rotate(-0.5deg);
+}
+
+main:not(.full-bleed) h1,
+main:not(.full-bleed) h2,
+main:not(.full-bleed) h3,
+main:not(.full-bleed) h4,
+main:not(.full-bleed) h5,
+main:not(.full-bleed) h6 {
+	color: #ffffff;
+	text-shadow: 3px 3px 0 #e60012;
+}
+
+main:not(.full-bleed) h2 {
+	background: #e60012;
+	color: #ffffff;
+	padding: 0.5rem 1.5rem;
+	display: inline-block;
+	transform: rotate(-2deg) skewX(-10deg);
+	border: 3px solid #ffffff;
+	box-shadow: 6px 6px 0 #000000;
+	text-shadow: none;
+	margin-bottom: 1.5rem;
+}
+
+main:not(.full-bleed) a {
+	color: #e60012;
+}
+
+main:not(.full-bleed) a:hover {
+	color: #ffffff;
+	background: #e60012;
+	border-color: #ffffff;
 }
 
 h1,
@@ -76,25 +116,19 @@ h4,
 h5,
 h6 {
 	margin: 0 0 1rem 0;
-	font-family: 'Bangers', cursive;
+	font-family: 'Space Grotesk', 'Bangers', sans-serif;
 	color: var(--text-color);
 	line-height: 1.1;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	text-shadow: 2px 2px 0 var(--accent-light);
 }
 
 h1 {
 	font-size: 4em;
-	-webkit-text-stroke: 1px var(--black);
-	text-shadow: 3px 3px 0 var(--accent);
 }
 
 h2 {
 	font-size: 3em;
-	border-bottom: 4px solid var(--black);
-	padding-bottom: 0.2em;
-	display: inline-block;
 }
 
 h3 {
@@ -119,32 +153,42 @@ a {
 }
 
 a:hover {
-	color: var(--white);
-	background: var(--accent);
-	box-shadow: 3px 3px 0 var(--black);
+	color: var(--black);
+	background: var(--white);
+	box-shadow: 4px 4px 0 var(--accent);
 	border: 2px solid var(--black);
-	padding: 0 4px;
-	margin: -2px -6px;
-	/* Adjust for border */
+	padding: 2px 6px;
+	transform: rotate(-2deg);
+	margin: 0;
 }
 
 /* Specific button style for actual buttons if any */
 .btn {
 	display: inline-block;
-	padding: 10px 20px;
-	background: var(--white);
-	border: 3px solid var(--black);
-	color: var(--black);
-	font-family: 'Bangers', cursive;
-	font-size: 1.5rem;
+	padding: 10px 24px;
+	background: var(--accent);
+	border: 3px solid var(--white);
+	color: var(--white);
+	font-family: 'Space Grotesk', sans-serif;
+	font-weight: 900;
 	text-transform: uppercase;
-	box-shadow: 4px 4px 0 var(--black);
+	box-shadow: 6px 6px 0 var(--black);
 	transition: transform 0.1s, box-shadow 0.1s;
 	cursor: pointer;
+	border-radius: 0;
+	transform: skewX(-10deg);
+}
+
+.btn:hover {
+	background: var(--white);
+	color: var(--black);
+	border-color: var(--black);
+	box-shadow: -6px 6px 0 var(--accent);
+	transform: skewX(-10deg) scale(1.02);
 }
 
 .btn:active {
-	transform: translate(2px, 2px);
+	transform: translate(2px, 2px) skewX(-10deg);
 	box-shadow: 2px 2px 0 var(--black);
 }
 
@@ -249,4 +293,29 @@ hr {
 	clip: rect(1px, 1px, 1px, 1px);
 	clip-path: inset(50%);
 	white-space: nowrap;
+}
+
+/* Cyber Theme Resets for Full-Bleed layouts */
+.full-bleed a {
+	color: inherit;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+}
+
+.full-bleed a:hover {
+	color: var(--accent);
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	padding: 0;
+	margin: 0;
+}
+
+.full-bleed img {
+	border: none;
+	box-shadow: none;
 }

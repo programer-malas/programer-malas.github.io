@@ -4,96 +4,209 @@ import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header>
-    <nav>
-        <h2><a href="/">{SITE_TITLE}</a></h2>
-        <div class="internal-links">
-            <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/works">Works</HeaderLink>
-            <!-- <HeaderLink href="/blog">Blog</HeaderLink> -->
+    <nav class="p5-nav-bar">
+        <a href="/" class="logo-container">
+            <span class="logo-top">PORTFOLIO SITE</span>
+            <span class="logo-main">programer malas</span>
+            <span class="logo-sub">portfolio</span>
+        </a>
+        <div class="nav-elements">
+            <div class="internal-links">
+                <HeaderLink href="/">PROFILE</HeaderLink>
+                <HeaderLink href="/works">WORKS</HeaderLink>
+                <HeaderLink href="/blog">BLOG</HeaderLink>
+            </div>
+            <a href="https://www.linkedin.com/in/aliem-arif-perkasa/" target="_blank" rel="noopener noreferrer" class="btn-entry">ENTRY</a>
         </div>
     </nav>
 </header>
+
 <style>
     header {
-        margin: 0;
-        padding: 1em;
-        background: var(--white);
-        border-bottom: var(--border-width) solid var(--border-color);
-        box-shadow: 0 4px 0 var(--black);
-        position: relative;
-        z-index: 10;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        padding: 2rem 4rem;
     }
-    h2 {
-        margin: 0;
-        font-size: 1.5em;
-    }
-
-    h2 a,
-    h2 a.active {
-        text-decoration: none;
-        color: var(--black);
-        background: var(--accent);
-        color: var(--white);
-        padding: 5px 10px;
-        border: 2px solid var(--black);
-        box-shadow: 3px 3px 0 var(--black);
-        transform: rotate(-2deg);
-        display: inline-block;
-    }
-    h2 a:hover {
-        transform: rotate(0deg) scale(1.05);
-        box-shadow: 2px 2px 0 var(--black);
-    }
-    nav {
+    
+    /* P5 Slanted Menu Navigation Panel */
+    .p5-nav-bar {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+        background: #000000;
+        border: 4px solid #ffffff;
+        padding: 1rem 3rem;
+        transform: rotate(-1deg) skewX(-6deg);
+        box-shadow: 8px 8px 0 #e60012;
     }
-    nav a {
-        padding: 0.5em 1em;
-        color: var(--black);
-        text-decoration: none;
-        font-family: "Bangers", cursive;
-        font-size: 1.2em;
-        letter-spacing: 1px;
-    }
-    nav a.active {
-        text-decoration: none;
-        color: var(--accent);
-        text-shadow: 1px 1px 0 var(--black);
-    }
-    .social-links,
-    .social-links a {
+
+    /* P5 Cardboard Logo cutouts (Counter-skewed to remain straight & readable) */
+    .logo-container {
         display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        color: var(--white);
+        line-height: 1.1;
+        transform: skewX(6deg) rotate(1deg);
     }
-    .social-links a {
-        transition: transform 0.2s;
-    }
-    .social-links a:hover {
-        transform: scale(1.2) rotate(5deg);
+
+    .logo-container:hover {
         background: transparent;
         border: none;
         box-shadow: none;
+        padding: 0;
         margin: 0;
     }
-    @media (max-width: 720px) {
-        .social-links {
-            display: none;
-        }
+
+    .logo-top {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        color: #ffffff;
+        text-transform: uppercase;
+        opacity: 0.8;
+        margin-bottom: 2px;
+    }
+
+    .logo-main {
+        font-family: 'Bangers', cursive;
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: #000000;
+        background: #ffffff;
+        padding: 2px 12px;
+        border: 3px solid #000000;
+        transform: rotate(-2deg) skewX(-2deg);
+        box-shadow: 4px 4px 0 #e60012;
+        width: max-content;
+        margin-bottom: 2px;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .logo-sub {
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 900;
+        background: #e60012;
+        color: #ffffff;
+        padding: 1px 8px;
+        width: max-content;
+        transform: rotate(2deg) skewX(2deg);
+        border: 2px solid #ffffff;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .nav-elements {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        transform: skewX(6deg) rotate(1deg); /* Counter-skew */
+    }
+
+    .internal-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    /* P5 Skewed Menu Link Cards */
+    .internal-links :global(a) {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 0.4rem 1.4rem;
+        border: 2px solid transparent;
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: inline-block;
+    }
+
+    .internal-links :global(a:hover),
+    .internal-links :global(a.active) {
+        background: #e60012;
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        transform: rotate(-3deg) skewX(-6deg) scale(1.05);
+        box-shadow: 4px 4px 0 #000000;
+    }
+
+    /* P5 Entry Button */
+    .btn-entry {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 900;
+        letter-spacing: 2px;
+        color: #ffffff;
+        background: #e60012;
+        border: 2px solid #ffffff;
+        padding: 0.6rem 2.2rem;
+        text-decoration: none;
+        box-shadow: 5px 5px 0 #000000;
+        transform: skewX(-6deg);
+        transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        text-transform: uppercase;
+        display: inline-block;
+    }
+
+    .btn-entry:hover {
+        background: #ffffff;
+        color: #000000;
+        border-color: #000000;
+        box-shadow: -5px 5px 0 #e60012;
+        transform: skewX(-3deg) scale(1.05) rotate(1deg);
+    }
+
+    @media (max-width: 992px) {
         header {
-            padding: 0.5em; /* Reduce padding on mobile */
-            width: 100%;
+            padding: 1.5rem;
+            position: relative;
+            background: #000000;
+            border-bottom: 4px solid #e60012;
         }
+
+        .p5-nav-bar {
+            transform: none;
+            box-shadow: none;
+            border: none;
+            padding: 0;
+            background: transparent;
+        }
+
+        .logo-container, .nav-elements {
+            transform: none;
+        }
+
         nav {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .nav-elements {
+            flex-direction: column;
+            gap: 1.5rem;
             width: 100%;
-            justify-content: space-between;
         }
-        h2 {
-            font-size: 1.2em; /* Adjust font size for mobile */
+
+        .internal-links {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
         }
-        nav a {
-            padding: 0.5em; /* Smaller touch targets padding if needed, or keep generous */
-            font-size: 1em;
+
+        .btn-entry {
+            width: 100%;
+            text-align: center;
         }
     }
 </style>
