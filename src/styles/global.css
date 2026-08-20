@@ -1,22 +1,38 @@
-/*
-  Manga Style Theme
- */
+/* ==========================================================================
+   ANIME-TECH DOSSIER THEME — EXACT MATCH FOR LAYOUT.JPG
+   ========================================================================== */
 
 :root {
-	--accent: #ff0055;
-	--accent-dark: #990033;
-	--black: #000000;
-	--white: #ffffff;
-	--gray-light: #f4f4f4;
+	/* Background Palette from layout.jpg */
+	--bg-canvas: #090e17;
+	--bg-hero: #0b1424;
+	--bg-mid: #101c2e;
+	--bg-bottom: #0d1726;
+	--bg-card: #152238;
+	--bg-panel-dark: #070c14;
 
-	--text-color: var(--black);
-	--bg-color: var(--white);
-	--border-color: var(--black);
+	/* Primary layout.jpg Accents */
+	--cyan-ice: #7dd3fc;
+	--cyan-glow: #38bdf8;
+	--cyan-bright: #00f2fe;
+	--cyan-dim: #0284c7;
+	--accent-blue: #3b82f6;
 
-	--border-width: 3px;
-	--shadow-offset: 6px;
-	--radius: 8px;
-	/* Slightly rounded but solid */
+	/* Text & Dividers */
+	--text-white: #ffffff;
+	--text-light: #f1f5f9;
+	--text-slate: #94a3b8;
+	--text-dim: #64748b;
+	--border-line: rgba(56, 189, 248, 0.22);
+	--border-subtle: rgba(148, 163, 184, 0.15);
+	--border-bright: rgba(56, 189, 248, 0.55);
+
+	/* Typography */
+	--font-headline: 'Bebas Neue', sans-serif;
+	--font-subhead: 'Teko', 'Chakra Petch', sans-serif;
+	--font-kanji: 'Noto Sans JP', sans-serif;
+	--font-mono: 'JetBrains Mono', monospace;
+	--font-body: 'Plus Jakarta Sans', sans-serif;
 }
 
 *,
@@ -25,218 +41,67 @@
 	box-sizing: border-box;
 }
 
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
+html {
+	scroll-behavior: smooth;
+	color-scheme: dark;
+	background-color: var(--bg-canvas);
 }
 
 body {
-	font-family: "Atkinson", sans-serif;
+	font-family: var(--font-body);
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background-color: var(--bg-color);
-	/* Halftone dot pattern */
-	background-image: radial-gradient(var(--black) 1px, transparent 1px);
-	background-size: 20px 20px;
-	color: var(--text-color);
-	font-size: 20px;
+	background-color: var(--bg-canvas);
+	color: var(--text-light);
+	font-size: 15px;
 	line-height: 1.6;
+	overflow-x: hidden;
+	min-height: 100vh;
 }
 
-main {
-	width: 800px;
-	max-width: calc(100% - 2em);
-	margin: auto;
-	padding: 3em 1em;
-	background: var(--white);
-	border: var(--border-width) solid var(--border-color);
-	box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--black);
-	margin-top: 2rem;
-	margin-bottom: 2rem;
-	position: relative;
-	border-radius: var(--radius);
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	margin: 0 0 1rem 0;
-	font-family: 'Bangers', cursive;
-	color: var(--text-color);
-	line-height: 1.1;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	text-shadow: 2px 2px 0 var(--accent-light);
+::-webkit-scrollbar-track {
+	background: var(--bg-canvas);
 }
 
-h1 {
-	font-size: 4em;
-	-webkit-text-stroke: 1px var(--black);
-	text-shadow: 3px 3px 0 var(--accent);
+::-webkit-scrollbar-thumb {
+	background: rgba(56, 189, 248, 0.3);
+	border-radius: 4px;
 }
 
-h2 {
-	font-size: 3em;
-	border-bottom: 4px solid var(--black);
-	padding-bottom: 0.2em;
-	display: inline-block;
+::-webkit-scrollbar-thumb:hover {
+	background: var(--cyan-glow);
 }
 
-h3 {
-	font-size: 2em;
-}
-
-h4 {
-	font-size: 1.5em;
-}
-
-strong,
-b {
-	font-weight: 700;
-}
-
-a {
-	color: var(--accent);
-	text-decoration: none;
-	border-bottom: 2px solid transparent;
-	font-weight: bold;
-	transition: all 0.2s;
-}
-
-a:hover {
-	color: var(--white);
-	background: var(--accent);
-	box-shadow: 3px 3px 0 var(--black);
-	border: 2px solid var(--black);
-	padding: 0 4px;
-	margin: -2px -6px;
-	/* Adjust for border */
-}
-
-/* Specific button style for actual buttons if any */
-.btn {
-	display: inline-block;
-	padding: 10px 20px;
-	background: var(--white);
-	border: 3px solid var(--black);
-	color: var(--black);
-	font-family: 'Bangers', cursive;
-	font-size: 1.5rem;
-	text-transform: uppercase;
-	box-shadow: 4px 4px 0 var(--black);
-	transition: transform 0.1s, box-shadow 0.1s;
-	cursor: pointer;
-}
-
-.btn:active {
-	transform: translate(2px, 2px);
-	box-shadow: 2px 2px 0 var(--black);
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 0.5rem 0;
+	color: var(--text-white);
+	line-height: 1;
 }
 
 p {
-	margin-bottom: 1.5em;
+	margin: 0 0 1rem 0;
+	color: var(--text-slate);
 }
 
-.prose p {
-	margin-bottom: 2em;
+a {
+	color: var(--cyan-ice);
+	text-decoration: none;
+	transition: all 0.2s ease;
 }
 
-textarea,
-input {
-	width: 100%;
-	font-size: 16px;
-	border: 2px solid var(--black);
-	padding: 8px;
-	border-radius: 4px;
-	font-family: inherit;
-	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+a:hover {
+	color: var(--text-white);
+	text-shadow: 0 0 8px rgba(125, 211, 252, 0.6);
 }
 
-img {
-	max-width: 100%;
-	height: auto;
-	border: 3px solid var(--black);
-	box-shadow: 5px 5px 0 var(--black);
-}
-
-code {
-	padding: 2px 5px;
-	background-color: var(--gray-light);
-	border: 1px solid var(--black);
-	border-radius: 2px;
-	font-family: monospace;
-}
-
-pre {
-	padding: 1.5em;
-	border: 2px solid var(--black);
-	background: #2d2d2d;
-	color: #fff;
-	box-shadow: 5px 5px 0 var(--black);
-	overflow-x: auto;
-}
-
-pre>code {
-	all: unset;
-	background: transparent;
-	border: none;
-	color: inherit;
-}
-
-blockquote {
-	border-left: 6px solid var(--black);
-	background: var(--gray-light);
-	padding: 1em;
-	margin: 1.5em 0;
-	font-size: 1.2rem;
-	font-style: italic;
-	font-family: 'Atkinson', sans-serif;
-	position: relative;
-	box-shadow: 3px 3px 0 var(--black);
-}
-
-hr {
-	border: none;
-	border-top: 3px solid var(--black);
-	margin: 2rem 0;
-}
-
-@media (max-width: 720px) {
-	body {
-		font-size: 18px;
-	}
-
-	main {
-		padding: 1em;
-		width: 100%;
-		max-width: 100%;
-		margin: 0;
-		border: none;
-		box-shadow: none;
-		border-bottom: 3px solid var(--black);
-		border-radius: 0;
-	}
-
-	h1 {
-		font-size: 2.5em;
-	}
-}
-
+/* Screenreader utility */
 .sr-only {
 	border: 0;
 	padding: 0;
@@ -245,7 +110,6 @@ hr {
 	height: 1px;
 	width: 1px;
 	overflow: hidden;
-	clip: rect(1px 1px 1px 1px);
 	clip: rect(1px, 1px, 1px, 1px);
 	clip-path: inset(50%);
 	white-space: nowrap;

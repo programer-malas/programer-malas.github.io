@@ -1,151 +1,712 @@
 ---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+// Fetch works for bottom right showcase
+const allWorks = (await getCollection("works")).sort(
+    (a, b) => a.data.order - b.data.order,
+);
+const showcaseWorks = allWorks.slice(0, 3);
 ---
 
 <!doctype html>
 <html lang="en">
     <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+        <BaseHead title={`${SITE_TITLE} | Fullstack Software Engineer`} description={SITE_DESCRIPTION} />
     </head>
-    <body>
+    <body class="poster-body">
         <Header />
-        <main>
-            <div class="comic-grid">
-                <div class="panel hero-panel">
-                    <h1>SOFTWARE<br />ENGINEER</h1>
-                    <div class="action-lines"></div>
-                </div>
 
-                <div class="panel profile-panel">
-                    <img
-                        src="/avatar/programerMalas.webp"
-                        alt="Profile Picture"
-                    />
-                    <div class="caption-box">Programer Malas</div>
-                </div>
+        <div class="poster-container">
+            <!-- ==============================================================
+                 1. TOP SECTION: HERO BANNER (MAHITO STYLE)
+                 ============================================================== -->
+            <section id="hero" class="hero-poster-section">
+                <div class="hero-bg-fx"></div>
+                <div class="hero-particles"></div>
 
-                <div class="panel intro-panel">
-                    <div class="speech-bubble">
-                        <p>
-                            <strong>Yo!</strong>
-                            I am a Software Engineer with <br /> over 11 years of
-                            experience building impactful digital products.
+                <div class="hero-inner">
+                    <!-- Left: Hero Typography & Info -->
+                    <div class="hero-text-col">
+                        <div class="hero-main-title-wrap">
+                            <h1 class="hero-big-title">PROGRAMER MALAS</h1>
+                            <div class="hero-category-subtitle">Fullstack Software Engineer</div>
+                        </div>
+
+                        <p class="hero-lead-text">
+                            Is a Senior Lead Software Engineer with over 11 years of experience architecting distributed high-availability systems, mission-critical web platforms, and mentoring engineering teams.
                         </p>
-                        <p>
-                            I’m also a frequent tech speaker who loves mentoring
-                            developers and leading teams to deliver great
-                            software.
-                        </p>
+
+                        <div class="hero-btn-wrap">
+                            <div class="btn-read-more-line">
+                                <a href="/works" class="btn-read-more">My Works</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Hero Visual Artwork -->
+                    <div class="hero-art-col">
+                        <div class="art-aura-glow"></div>
+                        <div class="hero-art-frame">
+                            <img
+                                src="/avatar/standprogramer.webp"
+                                alt="Aliem - Fullstack Software Engineer"
+                                class="hero-character-img"
+                            />
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="panel social-panel">
-                    <div class="social-label">Find Me On</div>
-                    <div class="social-badges">
-                        <a
-                            href="https://github.com/aliemtakarai"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="social-badge github"
-                            aria-label="GitHub"
-                        >
-                            <svg
-                                class="badge-icon"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"
-                                ></path>
-                            </svg>
-                            <span>GitHub</span>
-                        </a>
+            <!-- ==============================================================
+                 2. MIDDLE SECTION: BIOGRAPHICAL INFORMATION & SPECS DOSSIER
+                 ============================================================== -->
+            <section id="about" class="dossier-poster-section">
+                <div class="dossier-bg-particles" aria-hidden="true">
+                    <span class="particle p-1"></span>
+                    <span class="particle p-2"></span>
+                    <span class="particle p-3"></span>
+                    <span class="particle p-4"></span>
+                    <span class="particle p-5"></span>
+                    <span class="particle p-6"></span>
+                </div>
 
-                        <a
-                            href="https://www.linkedin.com/in/aliem-arif-perkasa/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="social-badge linkedin"
-                            aria-label="LinkedIn"
-                        >
-                            <svg
-                                class="badge-icon"
-                                viewBox="0 0 24 24"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-                                ></path>
-                            </svg>
-                            <span>LinkedIn</span>
-                        </a>
+                <div class="dossier-inner">
+                    <!-- Left: Character Standee with Stamp Badge -->
+                    <div class="dossier-standee-col">
+
+                        <!-- Standee Character Card Frame -->
+                        <div class="standee-wrapper">
+                            <img
+                                src="/avatar/programer_malas.webp"
+                                alt="Aliem Character Standee"
+                                class="standee-img"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Center: 3 Specification Blocks matching layout.jpg -->
+                    <div class="dossier-data-col">
+                        <!-- Block 1: BIOGRAPHICAL INFORMATION -->
+                        <div id="bio" class="dossier-spec-group">
+                            <div class="spec-group-header">
+                                <div class="spec-leader-line leader-up" aria-hidden="true">
+                                    <svg viewBox="0 0 140 38" preserveAspectRatio="none">
+                                        <path d="M 0 34 L 50 4 L 140 4" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <circle cx="2" cy="34" r="2.5" fill="#38bdf8" />
+                                    </svg>
+                                </div>
+                                <h3 class="spec-header-title">BIOGRAPHICAL INFORMATION</h3>
+                            </div>
+                            <div class="spec-items">
+                                <div class="spec-row">
+                                    <span class="spec-bullet">&gt;</span>
+                                    <span class="spec-label">NAMA :</span>
+                                    <span class="spec-text">Aliem Arif Perkasa</span>
+                                </div>
+                                <div class="spec-row">
+                                    <span class="spec-bullet">&gt;</span>
+                                    <span class="spec-label">ALIAS :</span>
+                                    <span class="spec-text">Programer Malas</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 2: PERSONAL DESCRIPTION -->
+                        <div id="skills" class="dossier-spec-group">
+                            <div class="spec-group-header">
+                                <div class="spec-leader-line leader-mid" aria-hidden="true">
+                                    <svg viewBox="0 0 140 20" preserveAspectRatio="none">
+                                        <line x1="0" y1="10" x2="140" y2="10" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5" stroke-linecap="round" />
+                                        <circle cx="2" cy="10" r="2.5" fill="#38bdf8" />
+                                    </svg>
+                                </div>
+                                <h3 class="spec-header-title">PERSONAL DESCRIPTION</h3>
+                            </div>
+                            <div class="spec-items">
+                                <div class="spec-row">
+                                    <span class="spec-bullet">&gt;</span>
+                                    <span class="spec-label">SPECIALIZATION :</span>
+                                    <span class="spec-text">Fullstack Developer</span>
+                                </div>
+                                <div class="spec-row">
+                                    <span class="spec-bullet">&gt;</span>
+                                    <span class="spec-label">CORE STACK :</span>
+                                    <span class="spec-text">TypeScript, Javascript, PHP, Python, GO</span>
+                                </div>
+                                <div class="spec-row">
+                                    <span class="spec-bullet">&gt;</span>
+                                    <span class="spec-label">FRAMEWORKS :</span>
+                                    <span class="spec-text">Laravel, Vue.js, React, Langchain, Langgraph, FastAPI, Django, Flask</span>
+                                </div>
+                                <div class="spec-row">
+                                    <span class="spec-bullet">&gt;</span>
+                                    <span class="spec-label">EXPERIENCE :</span>
+                                    <span class="spec-text">11+ Years of Production Shipping</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Block 3: PROFESSIONAL STATUS -->
+                        <div id="status" class="dossier-spec-group">
+                            <div class="spec-group-header">
+                                <div class="spec-leader-line leader-down" aria-hidden="true">
+                                    <svg viewBox="0 0 140 38" preserveAspectRatio="none">
+                                        <path d="M 0 4 L 50 34 L 140 34" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <circle cx="2" cy="4" r="2.5" fill="#38bdf8" />
+                                    </svg>
+                                </div>
+                                <h3 class="spec-header-title">PROFESSIONAL STATUS</h3>
+                            </div>
+                            <div class="spec-items">
+                                <div class="spec-row">
+                                    <span class="spec-bullet">&gt;</span>
+                                    <span class="spec-label">STATUS :</span>
+                                    <span class="spec-text highlight-cyan">Assistant Manager @ Ejen2u International</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
+        </div>
 
-                <div class="panel content-panel">
-                    <h2>Latest Transmission</h2>
-                    <p>
-                        I serve as <strong>Assistant Manager</strong> at <strong
-                            >Ejen2u International Sdn Bhd</strong
-                        >, leading the Fullstack Development team
-                    </p>
-                </div>
-            </div>
-        </main>
         <Footer />
     </body>
 </html>
 
 <style>
-    .comic-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        grid-template-rows: auto auto auto;
-        gap: 1.5rem;
-    }
-
-    .panel {
-        border: 3px solid var(--black);
-        padding: 1.5rem;
-        background: var(--white);
-        box-shadow: 5px 5px 0 var(--black);
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.2s;
-    }
-
-    .panel:hover {
-        transform: translate(-2px, -2px);
-        box-shadow: 7px 7px 0 var(--black);
-    }
-
-    .hero-panel {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-        background-color: var(--accent);
-        color: var(--white);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 300px;
-        transform: rotate(-1deg);
-        z-index: 2;
-    }
-
-    .profile-panel {
-        grid-column: 2 / 3;
-        grid-row: 1 / 2;
+    /* ── Poster Canvas Layout ─────────────────────────────────────────── */
+    .poster-body {
+        background-color: var(--bg-canvas);
+        color: var(--text-light);
+        margin: 0;
         padding: 0;
+    }
+
+    .poster-container {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
     }
 
-    .profile-panel img {
+    /* ===================================================================
+       1. TOP HERO SECTION
+       =================================================================== */
+    .hero-poster-section {
+        position: relative;
+        background: linear-gradient(180deg, #0c172a 0%, #0d1a2d 60%, #0e1b2f 100%);
+        padding: 4rem 3rem 4rem;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .hero-bg-fx {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: 
+            radial-gradient(circle at 75% 30%, rgba(56, 189, 248, 0.22) 0%, rgba(14, 165, 233, 0.08) 45%, transparent 70%),
+            radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 50%);
+        pointer-events: none;
+    }
+
+    .hero-inner {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1.15fr 0.95fr;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .hero-text-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .hero-main-title-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .hero-big-title {
+        font-family: var(--font-headline);
+        font-size: clamp(5.5rem, 11vw, 9rem);
+        font-weight: 400;
+        line-height: 0.85;
+        letter-spacing: 5px;
+        color: #ffffff;
+        margin: 0;
+        text-shadow: 0 0 25px rgba(125, 211, 252, 0.45);
+    }
+
+    .hero-category-subtitle {
+        font-family: var(--font-body);
+        font-size: clamp(0.78rem, 1.8vw, 0.95rem);
+        font-weight: 700;
+        letter-spacing: 4px;
+        color: #cbd5e1;
+        text-transform: uppercase;
+    }
+
+    .hero-kanji-row {
+        display: flex;
+        gap: 1.5rem;
+        margin: 0.25rem 0;
+    }
+
+    .kanji-glyph {
+        font-family: var(--font-kanji);
+        font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+        font-weight: 900;
+        color: #ffffff;
+        text-shadow: 0 0 16px rgba(255, 255, 255, 0.8);
+        line-height: 1;
+    }
+
+    .hero-lead-text {
+        font-size: 0.98rem;
+        line-height: 1.7;
+        color: #94a3b8;
+        max-width: 480px;
+        margin: 0;
+    }
+
+    /* Read More button with horizontal decorative line */
+    .hero-btn-wrap {
+        margin-top: 0.5rem;
+    }
+
+    .btn-read-more-line {
+        display: inline-flex;
+        align-items: center;
+        position: relative;
+    }
+
+    .btn-read-more {
+        display: inline-block;
+        padding: 0.45rem 2.2rem;
+        border: 1.5px solid #ffffff;
+        border-radius: 9999px;
+        color: #ffffff;
+        font-family: var(--font-body);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        background: rgba(12, 23, 42, 0.6);
+        transition: all 0.25s ease;
+    }
+
+    .btn-read-more:hover {
+        background: #ffffff;
+        color: #090e17;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+
+    /* Hero Art Col */
+    .hero-art-col {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .art-aura-glow {
+        position: absolute;
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, rgba(14, 165, 233, 0.1) 50%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .hero-art-frame {
+        position: relative;
+        z-index: 1;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        padding: 3px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(56, 189, 248, 0.5));
+        box-shadow: 0 0 35px rgba(56, 189, 248, 0.45);
+        overflow: hidden;
+    }
+
+    .hero-character-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        border: none;
+        box-shadow: none;
+    }
+
+    /* ===================================================================
+       2. MIDDLE SECTION: BIOGRAPHICAL DOSSIER & STAND-EE
+       =================================================================== */
+    .dossier-poster-section {
+        position: relative;
+        background: linear-gradient(180deg, #0e1a2c 0%, #101d30 50%, #0d1727 100%);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+        padding: 4rem 2.5rem;
+        overflow: hidden;
+    }
+
+    /* Ambient Glowing Particles matching layout.jpg */
+    .dossier-bg-particles {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .dossier-bg-particles .particle {
+        position: absolute;
+        border-radius: 50%;
+        background: #38bdf8;
+        box-shadow: 0 0 8px #38bdf8, 0 0 16px rgba(56, 189, 248, 0.6);
+        opacity: 0.55;
+        animation: floatParticle 8s infinite ease-in-out alternate;
+    }
+
+    .p-1 { width: 4px; height: 4px; top: 18%; left: 28%; animation-delay: 0s; }
+    .p-2 { width: 5px; height: 5px; top: 42%; left: 78%; animation-delay: 1.5s; }
+    .p-3 { width: 3px; height: 3px; top: 72%; left: 35%; animation-delay: 3s; }
+    .p-4 { width: 6px; height: 6px; top: 25%; left: 88%; animation-delay: 2s; }
+    .p-5 { width: 4px; height: 4px; top: 80%; left: 70%; animation-delay: 4.5s; }
+    .p-6 { width: 3px; height: 3px; top: 60%; left: 15%; animation-delay: 0.8s; }
+
+    @keyframes floatParticle {
+        0% { transform: translateY(0) scale(1); opacity: 0.3; }
+        50% { transform: translateY(-12px) scale(1.3); opacity: 0.75; }
+        100% { transform: translateY(-24px) scale(0.9); opacity: 0.4; }
+    }
+
+    .dossier-inner {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 280px 1fr 50px;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    /* Standee & Stamp */
+    .dossier-standee-col {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stamp-border-outer {
+        border: 2px dashed rgba(255, 255, 255, 0.85);
+        border-radius: 50%;
+        padding: 3px;
+        width: 76px;
+        height: 76px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(16, 28, 46, 0.95);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    }
+
+    .stamp-border-inner {
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .stamp-word {
+        font-family: var(--font-body);
+        font-size: 0.45rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: #ffffff;
+    }
+
+    .stamp-word-bold {
+        font-family: var(--font-headline);
+        font-size: 0.95rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+        color: #ffffff;
+        line-height: 1;
+    }
+
+    .standee-wrapper {
+        position: relative;
+        width: 260px;
+        height: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .standee-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.9))
+                drop-shadow(0 0 14px rgba(56, 189, 248, 0.55))
+                drop-shadow(0 15px 30px rgba(0, 0, 0, 0.85));
+    }
+
+    /* Dossier Spec Groups */
+    .dossier-data-col {
+        display: flex;
+        flex-direction: column;
+        gap: 2.25rem;
+    }
+
+    .dossier-spec-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .spec-group-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        position: relative;
+    }
+
+    .spec-leader-line {
+        width: 140px;
+        height: 38px;
+        margin-left: -58px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    .spec-leader-line svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: visible;
+        filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
+    }
+
+    .spec-header-title {
+        font-family: var(--font-body);
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        color: #ffffff;
+        text-transform: uppercase;
+        white-space: nowrap;
+        margin: 0;
+        line-height: 1;
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .spec-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-left: 0;
+    }
+
+    .spec-row {
+        display: flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .spec-bullet {
+        color: #cbd5e1;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-right: 2px;
+        flex-shrink: 0;
+    }
+
+    .spec-label {
+        color: #f1f5f9;
+        font-weight: 700;
+        font-size: 0.92rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+    .spec-text {
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 0.92rem;
+    }
+
+    .highlight-cyan {
+        color: #7dd3fc;
+        font-weight: 600;
+    }
+
+    .font-kanji {
+        font-family: var(--font-kanji);
+    }
+
+    /* Vertical Icon Dock Strip */
+    .dossier-icon-dock {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.75rem;
+        padding-left: 0.5rem;
+    }
+
+    .dock-icon-btn {
+        color: #ffffff;
+        opacity: 0.85;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dock-icon-btn:hover {
+        opacity: 1;
+        color: #38bdf8;
+        transform: scale(1.2);
+    }
+
+    /* ===================================================================
+       3. BOTTOM SECTION: LIFE STORY & ARTWORK SHOWCASE
+       =================================================================== */
+    .bottom-poster-section {
+        background: #0d1726;
+        padding: 0 2.5rem 3.5rem;
+    }
+
+    .bottom-credit-bar {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 0.85rem 0;
+        margin-bottom: 2.5rem;
+        text-align: left;
+    }
+
+    .credit-text {
+        font-family: var(--font-body);
+        font-size: 0.78rem;
+        color: #94a3b8;
+        letter-spacing: 0.5px;
+    }
+
+    .bottom-inner-grid {
+        display: grid;
+        grid-template-columns: 200px 1fr 280px;
+        gap: 2.5rem;
+        align-items: stretch;
+    }
+
+    /* Bottom Left: Kanji Logo & Vertical Life Story & 3 Rings */
+    .bottom-left-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+    }
+
+    .kanji-logo-header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .kanji-logo-title {
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: #ffffff;
+        line-height: 1;
+        letter-spacing: 2px;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    .kanji-logo-sub {
+        font-size: 0.65rem;
+        color: #38bdf8;
+        letter-spacing: 2px;
+        margin-top: 0.25rem;
+    }
+
+    .life-story-milestones-row {
+        display: flex;
+        gap: 1.25rem;
+        align-items: center;
+    }
+
+    .vertical-life-story-label {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        color: #ffffff;
+        white-space: nowrap;
+    }
+
+    .expression-thumbnail-rings {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .thumb-ring {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        padding: 2px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(56, 189, 248, 0.4));
+        box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    .ring-border {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .ring-face-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -153,284 +714,240 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
         box-shadow: none;
     }
 
-    .caption-box {
-        background: var(--black);
-        color: var(--white);
-        font-family: "Bangers", cursive;
-        text-align: center;
-        padding: 0.5rem;
-        font-size: 1.2rem;
-        letter-spacing: 1px;
+    /* Bottom Center: Narrative & Dual Capsules */
+    .bottom-center-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 2rem;
     }
 
-    .hero-panel h1 {
-        color: var(--white);
-        text-shadow: 4px 4px 0 var(--black);
-        font-size: 3.5rem;
-        text-align: center;
-        line-height: 0.9;
-        z-index: 2;
-        -webkit-text-stroke: 2px var(--black);
+    .narrative-text-box p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: #cbd5e1;
+        margin-bottom: 1.25rem;
     }
 
-    .action-lines {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 10px,
-            rgba(0, 0, 0, 0.1) 10px,
-            rgba(0, 0, 0, 0.1) 20px
-        );
-        z-index: 1;
+    .dual-capsule-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
     }
 
-    .intro-panel {
-        grid-column: 1 / -1;
+    .capsule-box {
+        background: #09121f;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 9999px;
+        padding: 0.75rem 1.25rem;
         display: flex;
         align-items: center;
-        justify-content: center;
-        background-color: var(--gray-light);
-        min-height: 150px;
+        gap: 0.85rem;
+        text-decoration: none;
+        transition: all 0.2s ease;
     }
 
-    .speech-bubble {
-        background: var(--white);
-        border: 3px solid var(--black);
-        padding: 1.5rem;
-        border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
-        position: relative;
-        max-width: 400px;
-        text-align: center;
-        box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    .capsule-box:hover {
+        border-color: #38bdf8;
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.35);
+        transform: translateY(-2px);
     }
 
-    .speech-bubble::after {
-        content: "";
-        position: absolute;
-        top: -20px;
-        right: 20%;
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 0px solid transparent;
-        border-bottom: 20px solid var(--black);
-    }
-    .speech-bubble::before {
-        content: "";
-        position: absolute;
-        top: -13px;
-        right: 21%;
-        width: 0;
-        height: 0;
-        border-left: 16px solid transparent;
-        border-right: 0px solid transparent;
-        border-bottom: 16px solid var(--white);
-        z-index: 1;
-    }
-
-    .content-panel {
-        grid-column: 1 / -1;
-    }
-
-    .highlight {
-        background: linear-gradient(
-            120deg,
-            var(--accent) 0%,
-            var(--accent) 100%
-        );
-        background-repeat: no-repeat;
-        background-size: 100% 0.3em;
-        background-position: 0 88%;
-        font-weight: bold;
-    }
-
-    .cta-container {
-        margin-top: 1.5rem;
-        display: flex;
-        gap: 1rem;
-    }
-
-    .btn.secondary {
-        background: var(--black);
-        color: var(--white);
-    }
-
-    .graphics-panel {
-        background: var(--black);
-        color: var(--white);
+    .author-chevron-logo {
+        color: #ffffff;
         display: flex;
         align-items: center;
+    }
+
+    .author-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .author-name {
+        font-family: var(--font-body);
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .author-role {
+        font-size: 0.65rem;
+        color: #94a3b8;
+    }
+
+    .capsule-design-badge {
         justify-content: center;
         text-align: center;
     }
 
-    .graphics-panel h3 {
-        color: var(--white);
-        border: 2px solid var(--white);
-        padding: 0.5rem;
-        transform: rotate(3deg);
-    }
-
-    /* ── Social badges panel ── */
-    .social-panel {
-        grid-column: 1 / -1;
+    .design-badge-info {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
-        background: var(--gray-light);
-        padding: 1.5rem;
     }
 
-    .social-label {
-        font-family: "Bangers", cursive;
-        font-size: 1.4rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--black);
-        border: 3px solid var(--black);
-        background: var(--accent);
-        color: var(--white);
-        padding: 2px 14px;
-        box-shadow: 3px 3px 0 var(--black);
-        transform: rotate(-1deg);
-    }
-
-    .social-badges {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        justify-content: center;
-    }
-
-    .social-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1.1rem;
-        border: 3px solid var(--black);
-        box-shadow: 4px 4px 0 var(--black);
-        font-family: "Bangers", cursive;
-        font-size: 1.1rem;
+    .design-badge-sub {
+        font-size: 0.65rem;
+        font-weight: 700;
         letter-spacing: 1px;
-        text-transform: uppercase;
+        color: #ffffff;
+    }
+
+    .design-badge-main {
+        font-family: var(--font-headline);
+        font-size: 1.5rem;
+        font-weight: 400;
+        letter-spacing: 2px;
+        color: #ffffff;
+        line-height: 0.9;
+    }
+
+    /* Bottom Right: 3 Stacked Artwork Cards */
+    .bottom-right-col {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .artwork-cards-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    .artwork-preview-card {
+        position: relative;
+        width: 100%;
+        height: 92px;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         text-decoration: none;
-        transition:
-            transform 0.15s,
-            box-shadow 0.15s;
-        border-radius: 0;
-        /* override global a:hover */
-        background: var(--white);
-        color: var(--black);
-        border-bottom: 3px solid var(--black);
-        margin: 0;
+        transition: transform 0.25s ease, border-color 0.25s ease;
     }
 
-    .social-badge:hover {
-        transform: translate(-3px, -3px);
-        box-shadow: 7px 7px 0 var(--black);
-        /* reset global overrides */
-        background: var(--white);
-        color: var(--black);
-        padding: 0.5rem 1.1rem;
-        margin: 0;
-        border: 3px solid var(--black);
+    .artwork-preview-card:hover {
+        transform: scale(1.04);
+        border-color: #38bdf8;
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
     }
 
-    .social-badge:active {
-        transform: translate(2px, 2px);
-        box-shadow: 2px 2px 0 var(--black);
-    }
-
-    /* Per-platform accent colours */
-    .social-badge.github {
-        background: #24292e;
-        color: #fff;
-    }
-    .social-badge.github:hover {
-        background: #24292e;
-        color: #fff;
-    }
-
-    .social-badge.linkedin {
-        background: #0077b5;
-        color: #fff;
-    }
-    .social-badge.linkedin:hover {
-        background: #0077b5;
-        color: #fff;
-    }
-
-    .social-badge.twitter {
-        background: #000;
-        color: #fff;
-    }
-    .social-badge.twitter:hover {
-        background: #000;
-        color: #fff;
-    }
-
-    .social-badge.instagram {
-        background: linear-gradient(
-            135deg,
-            #f09433,
-            #e6683c,
-            #dc2743,
-            #cc2366,
-            #bc1888
-        );
-        color: #fff;
-    }
-    .social-badge.instagram:hover {
-        background: linear-gradient(
-            135deg,
-            #f09433,
-            #e6683c,
-            #dc2743,
-            #cc2366,
-            #bc1888
-        );
-        color: #fff;
-    }
-
-    .badge-icon {
-        width: 20px;
-        height: 20px;
-        flex-shrink: 0;
+    .artwork-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         border: none;
         box-shadow: none;
+    }
+
+    .artwork-img-fallback {
+        width: 100%;
+        height: 100%;
+        background: #152238;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-headline);
+        font-size: 2rem;
+        color: #38bdf8;
+    }
+
+    .artwork-card-glow-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0.4rem 0.6rem;
+        background: linear-gradient(0deg, rgba(9, 14, 23, 0.9) 0%, transparent 100%);
+    }
+
+    .artwork-card-title {
+        font-family: var(--font-headline);
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        color: #ffffff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         display: block;
     }
 
-    @media (max-width: 768px) {
-        .comic-grid {
+    /* ── Responsive Breakpoints ───────────────────────────────────────── */
+    @media (max-width: 1024px) {
+        .hero-inner {
             grid-template-columns: 1fr;
-            grid-template-rows: auto;
+            text-align: center;
         }
 
-        .hero-panel,
-        .profile-panel,
-        .intro-panel {
-            grid-column: auto;
-            grid-row: auto;
+        .hero-text-col {
+            align-items: center;
         }
 
-        .hero-panel {
-            transform: rotate(0deg);
-        }
-
-        .speech-bubble {
+        .hero-lead-text {
             max-width: 100%;
-            border-radius: 12px;
         }
-        .speech-bubble::after,
-        .speech-bubble::before {
-            display: none;
+
+        .dossier-inner {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .spec-leader-line {
+            width: 50px;
+        }
+
+        .dossier-icon-dock {
+            flex-direction: row;
+            padding-left: 0;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .bottom-inner-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .dual-capsule-row {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .hero-poster-section {
+            padding: 2.5rem 1.25rem;
+        }
+
+        .dossier-poster-section {
+            padding: 2.5rem 1.25rem;
+        }
+
+        .spec-header-title {
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+            white-space: normal;
+        }
+
+        .spec-leader-line {
+            width: 30px;
+        }
+
+        .bottom-poster-section {
+            padding: 0 1.25rem 2.5rem;
+        }
+
+        .spec-row {
+            flex-direction: row;
+            gap: 0.3rem;
+        }
+
+        .spec-bullet {
+            min-width: unset;
         }
     }
 </style>
+
+
