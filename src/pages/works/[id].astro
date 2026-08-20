@@ -87,7 +87,7 @@ function tagBorder(tag: string): string {
             <div class="back-link-row">
                 <a href="/works" class="back-cyber-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-                    <span>RETURN TO ARCHIVES</span>
+                    <span>RETURN TO WORKS</span>
                 </a>
             </div>
 
@@ -96,7 +96,7 @@ function tagBorder(tag: string): string {
                 <div class="work-hero-glow"></div>
                 <div class="work-hero-content">
                     <div class="hero-meta-row">
-                        <span class="meta-dossier-id">DOSSIER // #{work.data.order.toString().padStart(2, "0")}</span>
+                        <span class="meta-dossier-id">WORK // #{work.data.order.toString().padStart(2, "0")}</span>
                         {work.data.featured && <span class="badge-featured">FEATURED SYSTEM</span>}
                     </div>
 
@@ -120,7 +120,7 @@ function tagBorder(tag: string): string {
                         {work.data.link && (
                             <a href={work.data.link} target="_blank" rel="noopener noreferrer" class="btn-cyber btn-cyber-solid">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                                <span>LAUNCH SYSTEM</span>
+                                <span>VISIT {work.data.title}</span>
                             </a>
                         )}
                         {work.data.github && (
