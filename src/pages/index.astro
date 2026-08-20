@@ -94,12 +94,6 @@ const showcaseWorks = allWorks.slice(0, 3);
                         <!-- Block 1: BIOGRAPHICAL INFORMATION -->
                         <div id="bio" class="dossier-spec-group">
                             <div class="spec-group-header">
-                                <div class="spec-leader-line leader-up" aria-hidden="true">
-                                    <svg viewBox="0 0 140 38" preserveAspectRatio="none">
-                                        <path d="M 0 34 L 50 4 L 140 4" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        <circle cx="2" cy="34" r="2.5" fill="#38bdf8" />
-                                    </svg>
-                                </div>
                                 <h3 class="spec-header-title">BIOGRAPHICAL INFORMATION</h3>
                             </div>
                             <div class="spec-items">
@@ -119,12 +113,6 @@ const showcaseWorks = allWorks.slice(0, 3);
                         <!-- Block 2: PERSONAL DESCRIPTION -->
                         <div id="skills" class="dossier-spec-group">
                             <div class="spec-group-header">
-                                <div class="spec-leader-line leader-mid" aria-hidden="true">
-                                    <svg viewBox="0 0 140 20" preserveAspectRatio="none">
-                                        <line x1="0" y1="10" x2="140" y2="10" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5" stroke-linecap="round" />
-                                        <circle cx="2" cy="10" r="2.5" fill="#38bdf8" />
-                                    </svg>
-                                </div>
                                 <h3 class="spec-header-title">PERSONAL DESCRIPTION</h3>
                             </div>
                             <div class="spec-items">
@@ -154,19 +142,13 @@ const showcaseWorks = allWorks.slice(0, 3);
                         <!-- Block 3: PROFESSIONAL STATUS -->
                         <div id="status" class="dossier-spec-group">
                             <div class="spec-group-header">
-                                <div class="spec-leader-line leader-down" aria-hidden="true">
-                                    <svg viewBox="0 0 140 38" preserveAspectRatio="none">
-                                        <path d="M 0 4 L 50 34 L 140 34" fill="none" stroke="rgba(255, 255, 255, 0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                        <circle cx="2" cy="4" r="2.5" fill="#38bdf8" />
-                                    </svg>
-                                </div>
                                 <h3 class="spec-header-title">PROFESSIONAL STATUS</h3>
                             </div>
                             <div class="spec-items">
                                 <div class="spec-row">
                                     <span class="spec-bullet">&gt;</span>
                                     <span class="spec-label">STATUS :</span>
-                                    <span class="spec-text highlight-cyan">Assistant Manager @ Ejen2u International</span>
+                                    <span class="spec-text highlight-cyan">Assistant Manager @ Ejen2u International Sdn Bhd</span>
                                 </div>
                             </div>
                         </div>
@@ -501,25 +483,6 @@ const showcaseWorks = allWorks.slice(0, 3);
         align-items: center;
         gap: 0.75rem;
         position: relative;
-    }
-
-    .spec-leader-line {
-        width: 140px;
-        height: 38px;
-        margin-left: -58px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        z-index: 3;
-        pointer-events: none;
-    }
-
-    .spec-leader-line svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-        overflow: visible;
-        filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.5));
     }
 
     .spec-header-title {
@@ -895,10 +858,6 @@ const showcaseWorks = allWorks.slice(0, 3);
             gap: 2rem;
         }
 
-        .spec-leader-line {
-            width: 50px;
-        }
-
         .dossier-icon-dock {
             flex-direction: row;
             padding-left: 0;
@@ -929,10 +888,6 @@ const showcaseWorks = allWorks.slice(0, 3);
             font-size: 1.05rem;
             letter-spacing: 1px;
             white-space: normal;
-        }
-
-        .spec-leader-line {
-            width: 30px;
         }
 
         .bottom-poster-section {
