@@ -1,99 +1,354 @@
 ---
 import { SITE_TITLE } from "../consts";
-import HeaderLink from "./HeaderLink.astro";
 ---
 
-<header>
-    <nav>
-        <h2><a href="/">{SITE_TITLE}</a></h2>
-        <div class="internal-links">
-            <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/works">Works</HeaderLink>
-            <!-- <HeaderLink href="/blog">Blog</HeaderLink> -->
+<header class="poster-navbar">
+    <div class="nav-inner">
+        <!-- Left: Brand Logo -->
+        <a href="/" class="nav-logo-link" aria-label="Home">
+            <img
+                src="/avatar/logo.webp"
+                alt="Programer Malas Logo"
+                class="nav-logo-img"
+            />
+        </a>
+
+        <!-- Right: Hamburger Menu Icon -->
+        <button id="nav-toggle" class="nav-hamburger" aria-label="Toggle Menu" aria-expanded="false">
+            <span class="hamburger-line line-1"></span>
+            <span class="hamburger-line line-2"></span>
+            <span class="hamburger-line line-3"></span>
+        </button>
+    </div>
+
+    <!-- Backdrop Overlay -->
+    <div id="nav-backdrop" class="nav-backdrop" aria-hidden="true"></div>
+
+    <!-- Slide-in Drawer from Right -->
+    <aside id="nav-drawer" class="nav-drawer" aria-label="Navigation Menu">
+        <div class="drawer-header">
+            <span class="drawer-title">NAVIGATION</span>
         </div>
-    </nav>
+
+        <nav class="drawer-nav">
+            <a href="#hero" class="drawer-nav-item">
+                <span class="nav-item-text">HOME</span>
+            </a>
+            <a href="/works" class="drawer-nav-item">
+                <span class="nav-item-text">WORKS</span>
+            </a>
+            <a href="/blog" class="drawer-nav-item">
+                <span class="nav-item-text">BLOG</span>
+            </a>
+        </nav>
+
+        <div class="drawer-footer">
+            <span class="drawer-footer-text">PROGRAMER MALAS // 2026</span>
+        </div>
+    </aside>
 </header>
-<style>
-    header {
-        margin: 0;
-        padding: 1em;
-        background: var(--white);
-        border-bottom: var(--border-width) solid var(--border-color);
-        box-shadow: 0 4px 0 var(--black);
-        position: relative;
-        z-index: 10;
-    }
-    h2 {
-        margin: 0;
-        font-size: 1.5em;
+
+<script>
+    const navToggle = document.getElementById("nav-toggle");
+    const drawerClose = document.getElementById("drawer-close");
+    const drawer = document.getElementById("nav-drawer");
+    const backdrop = document.getElementById("nav-backdrop");
+    const drawerItems = document.querySelectorAll(".drawer-nav-item");
+
+    function openDrawer() {
+        if (!drawer || !backdrop || !navToggle) return;
+        drawer.classList.add("open");
+        backdrop.classList.add("open");
+        navToggle.classList.add("active");
+        navToggle.setAttribute("aria-expanded", "true");
+        document.body.style.overflow = "hidden";
     }
 
-    h2 a,
-    h2 a.active {
-        text-decoration: none;
-        color: var(--black);
-        background: var(--accent);
-        color: var(--white);
-        padding: 5px 10px;
-        border: 2px solid var(--black);
-        box-shadow: 3px 3px 0 var(--black);
-        transform: rotate(-2deg);
-        display: inline-block;
+    function closeDrawer() {
+        if (!drawer || !backdrop || !navToggle) return;
+        drawer.classList.remove("open");
+        backdrop.classList.remove("open");
+        navToggle.classList.remove("active");
+        navToggle.setAttribute("aria-expanded", "false");
+        document.body.style.overflow = "";
     }
-    h2 a:hover {
-        transform: rotate(0deg) scale(1.05);
-        box-shadow: 2px 2px 0 var(--black);
+
+    navToggle?.addEventListener("click", () => {
+        const isOpen = drawer?.classList.contains("open");
+        if (isOpen) {
+            closeDrawer();
+        } else {
+            openDrawer();
+        }
+    });
+
+    drawerClose?.addEventListener("click", closeDrawer);
+    backdrop?.addEventListener("click", closeDrawer);
+
+    drawerItems.forEach((item) => {
+        item.addEventListener("click", closeDrawer);
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && drawer?.classList.contains("open")) {
+            closeDrawer();
+        }
+    });
+</script>
+
+<style>
+    .poster-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(12, 20, 34, 0.92);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.18);
+        width: 100%;
     }
-    nav {
+
+    .nav-inner {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0.75rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-    nav a {
-        padding: 0.5em 1em;
-        color: var(--black);
-        text-decoration: none;
-        font-family: "Bangers", cursive;
-        font-size: 1.2em;
-        letter-spacing: 1px;
-    }
-    nav a.active {
-        text-decoration: none;
-        color: var(--accent);
-        text-shadow: 1px 1px 0 var(--black);
-    }
-    .social-links,
-    .social-links a {
+
+    /* Left Logo */
+    .nav-logo-link {
         display: flex;
+        align-items: center;
+        text-decoration: none;
+        transition: transform 0.2s ease;
     }
-    .social-links a {
-        transition: transform 0.2s;
+
+    .nav-logo-link:hover {
+        transform: scale(1.05);
     }
-    .social-links a:hover {
-        transform: scale(1.2) rotate(5deg);
+
+    .nav-logo-img {
+        height: 38px;
+        width: auto;
+        max-width: 130px;
+        object-fit: contain;
+        display: block;
+        filter: drop-shadow(1.5px 0 0 #000000)
+                drop-shadow(-1.5px 0 0 #000000)
+                drop-shadow(0 1.5px 0 #000000)
+                drop-shadow(0 -1.5px 0 #000000)
+                drop-shadow(1px 1px 0 #000000)
+                drop-shadow(-1px -1px 0 #000000)
+                drop-shadow(1px -1px 0 #000000)
+                drop-shadow(-1px 1px 0 #000000);
+        transition: filter 0.2s ease;
+    }
+
+    .nav-logo-link:hover .nav-logo-img {
+        filter: drop-shadow(2px 0 0 #000000)
+                drop-shadow(-2px 0 0 #000000)
+                drop-shadow(0 2px 0 #000000)
+                drop-shadow(0 -2px 0 #000000)
+                drop-shadow(1.5px 1.5px 0 #000000)
+                drop-shadow(-1.5px -1.5px 0 #000000)
+                drop-shadow(1.5px -1.5px 0 #000000)
+                drop-shadow(-1.5px 1.5px 0 #000000)
+                drop-shadow(0 0 8px rgba(0, 0, 0, 0.9));
+    }
+
+    /* Right Hamburger Icon */
+    .nav-hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 28px;
+        height: 20px;
         background: transparent;
         border: none;
-        box-shadow: none;
-        margin: 0;
+        cursor: pointer;
+        padding: 0;
+        position: relative;
+        z-index: 201;
     }
-    @media (max-width: 720px) {
-        .social-links {
-            display: none;
+
+    .hamburger-line {
+        width: 100%;
+        height: 2px;
+        background: #ffffff;
+        border-radius: 2px;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        transform-origin: center;
+    }
+
+    .nav-hamburger:hover .hamburger-line {
+        background: #38bdf8;
+    }
+
+    .nav-hamburger.active .line-1 {
+        transform: translateY(9px) rotate(45deg);
+        background: #38bdf8;
+    }
+
+    .nav-hamburger.active .line-2 {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    .nav-hamburger.active .line-3 {
+        transform: translateY(-9px) rotate(-45deg);
+        background: #38bdf8;
+    }
+
+    /* Backdrop Overlay */
+    .nav-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(5, 10, 20, 0.7);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 199;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .nav-backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    /* Right Slide-In Drawer */
+    .nav-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 320px;
+        max-width: 85vw;
+        height: 100vh;
+        background: rgba(10, 18, 32, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid rgba(56, 189, 248, 0.35);
+        box-shadow: -15px 0 45px rgba(0, 0, 0, 0.85);
+        z-index: 200;
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem 1.75rem;
+        transform: translateX(100%);
+        transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-drawer.open {
+        transform: translateX(0);
+    }
+
+    .drawer-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1.25rem;
+        border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+        margin-bottom: 1.5rem;
+    }
+
+    .drawer-title {
+        font-family: var(--font-headline, 'Bebas Neue', sans-serif);
+        font-size: 1.35rem;
+        letter-spacing: 2px;
+        color: #38bdf8;
+    }
+
+    .drawer-close-btn {
+        background: transparent;
+        border: none;
+        color: #94a3b8;
+        cursor: pointer;
+        padding: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .drawer-close-btn:hover {
+        color: #ffffff;
+        transform: scale(1.15);
+    }
+
+    /* Drawer Nav Items */
+    .drawer-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        flex: 1;
+    }
+
+    .drawer-nav-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.85rem 1rem;
+        color: #e2e8f0;
+        text-decoration: none;
+        border-radius: 8px;
+        border: 1px solid transparent;
+        transition: all 0.2s ease;
+    }
+
+    .drawer-nav-item:hover {
+        background: rgba(56, 189, 248, 0.12);
+        border-color: rgba(56, 189, 248, 0.35);
+        transform: translateX(6px);
+    }
+
+    .nav-item-num {
+        font-family: var(--font-body);
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #38bdf8;
+        letter-spacing: 1px;
+    }
+
+    .nav-item-text {
+        font-family: var(--font-headline, 'Bebas Neue', sans-serif);
+        font-size: 1.25rem;
+        letter-spacing: 1.5px;
+        color: #ffffff;
+    }
+
+    .drawer-nav-item:hover .nav-item-text {
+        color: #7dd3fc;
+        text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+    }
+
+    /* Drawer Footer */
+    .drawer-footer {
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        text-align: center;
+    }
+
+    .drawer-footer-text {
+        font-family: var(--font-body);
+        font-size: 0.7rem;
+        color: #64748b;
+        letter-spacing: 1.5px;
+    }
+
+    @media (max-width: 640px) {
+        .nav-inner {
+            padding: 0.75rem 1.25rem;
         }
-        header {
-            padding: 0.5em; /* Reduce padding on mobile */
-            width: 100%;
-        }
-        nav {
-            width: 100%;
-            justify-content: space-between;
-        }
-        h2 {
-            font-size: 1.2em; /* Adjust font size for mobile */
-        }
-        nav a {
-            padding: 0.5em; /* Smaller touch targets padding if needed, or keep generous */
-            font-size: 1em;
+
+        .nav-drawer {
+            width: 280px;
+            padding: 1.25rem 1.25rem;
         }
     }
 </style>
+
+

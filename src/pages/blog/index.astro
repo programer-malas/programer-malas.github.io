@@ -15,100 +15,265 @@ const posts = (await getCollection('blog')).sort(
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-			}
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
+		<BaseHead title={`Transmission Log | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
-		<main>
-			<section>
-				<ul>
+		<main class="blog-main-wrapper">
+			<!-- Hero Header Panel -->
+			<div class="blog-hero hud-panel">
+				<div class="blog-hero-glow"></div>
+				<div class="blog-hero-content">
+					<div class="blog-meta-tag">
+						<span class="pulse-indicator"></span>
+						<span>TRANSMISSION ARCHIVES // TECH LOGS</span>
+					</div>
+					<h1>TRANSMISSION LOG</h1>
+					<p class="blog-hero-desc">
+						Reflections on software architecture, engineering leadership, and fullstack technologies.
+					</p>
+				</div>
+			</div>
+
+			<!-- Posts Grid -->
+			<section class="posts-section">
+				<div class="posts-grid">
 					{
 						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									{post.data.heroImage && (
-										<Image width={720} height={360} src={post.data.heroImage} alt="" />
-									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
+							<article class="post-card hud-panel">
+								<a href={`/blog/${post.id}/`} class="post-card-link">
+									<div class="post-img-box">
+										{post.data.heroImage ? (
+											<Image
+												width={720}
+												height={360}
+												src={post.data.heroImage}
+												alt={post.data.title}
+												class="post-img"
+											/>
+										) : (
+											<div class="post-img-placeholder">
+												<span>LOG</span>
+											</div>
+										)}
+									</div>
+									<div class="post-body">
+										<div class="post-date-row">
+											<span class="post-date">
+												<FormattedDate date={post.data.pubDate} />
+											</span>
+										</div>
+										<h3 class="post-title">{post.data.title}</h3>
+										<p class="post-desc">{post.data.description}</p>
+										<span class="post-read-more">
+											<span>READ TRANSMISSION</span>
+											<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+										</span>
+									</div>
 								</a>
-							</li>
+							</article>
 						))
 					}
-				</ul>
+				</div>
 			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.blog-main-wrapper {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2.5rem 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	.blog-hero {
+		padding: 3.5rem 3rem;
+		background: linear-gradient(135deg, rgba(13, 21, 39, 0.95), rgba(7, 11, 20, 0.98));
+		border: 1px solid var(--border-cyan);
+		border-radius: 6px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.blog-hero-glow {
+		position: absolute;
+		top: -40%;
+		left: 40%;
+		width: 500px;
+		height: 500px;
+		background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, transparent 70%);
+		pointer-events: none;
+	}
+
+	.blog-hero-content {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.blog-meta-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: var(--cyan-light);
+		letter-spacing: 1.5px;
+	}
+
+	.pulse-indicator {
+		width: 8px;
+		height: 8px;
+		background: var(--cyan-neon);
+		border-radius: 50%;
+		box-shadow: 0 0 8px var(--cyan-neon);
+	}
+
+	.blog-hero h1 {
+		font-family: var(--font-title);
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		font-weight: 900;
+		letter-spacing: 3px;
+		color: var(--white);
+		margin: 0;
+		text-shadow: 0 0 25px rgba(56, 189, 248, 0.35);
+	}
+
+	.blog-hero-desc {
+		font-size: 1.05rem;
+		color: var(--text-sub);
+		max-width: 600px;
+		margin: 0;
+		line-height: 1.7;
+	}
+
+	.posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+
+	.post-card {
+		background: rgba(13, 21, 39, 0.85);
+		border: 1px solid var(--border-cyan);
+		border-radius: 6px;
+		overflow: hidden;
+		transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.post-card:hover {
+		border-color: var(--cyan-light);
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), var(--glow-cyan-sm);
+		transform: translateY(-4px);
+	}
+
+	.post-card-link {
+		display: flex;
+		flex-direction: column;
+		text-decoration: none;
+		height: 100%;
+	}
+
+	.post-img-box {
+		width: 100%;
+		height: 220px;
+		background: var(--bg-deep);
+		overflow: hidden;
+		border-bottom: 1px solid var(--border-cyan);
+	}
+
+	.post-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border: none;
+		box-shadow: none;
+		transition: transform 0.4s ease;
+	}
+
+	.post-card:hover .post-img {
+		transform: scale(1.05);
+	}
+
+	.post-img-placeholder {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-family: var(--font-display);
+		font-size: 3rem;
+		color: var(--cyan-light);
+		opacity: 0.3;
+	}
+
+	.post-body {
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		flex-grow: 1;
+	}
+
+	.post-date {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: var(--cyan-light);
+	}
+
+	.post-title {
+		margin: 0;
+		font-family: var(--font-display);
+		font-size: 1.4rem;
+		font-weight: 700;
+		color: var(--white);
+		line-height: 1.2;
+		transition: color 0.2s ease;
+	}
+
+	.post-card:hover .post-title {
+		color: var(--cyan-neon);
+	}
+
+	.post-desc {
+		font-size: 0.95rem;
+		color: var(--text-sub);
+		line-height: 1.6;
+		margin: 0;
+		flex-grow: 1;
+	}
+
+	.post-read-more {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		font-weight: 600;
+		color: var(--cyan-light);
+		letter-spacing: 1px;
+		margin-top: 0.5rem;
+	}
+
+	@media (max-width: 640px) {
+		.blog-main-wrapper {
+			padding: 1.5rem 1rem;
+		}
+
+		.blog-hero {
+			padding: 2rem 1.25rem;
+		}
+
+		.posts-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
+
